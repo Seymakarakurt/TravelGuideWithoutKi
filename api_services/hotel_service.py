@@ -135,15 +135,17 @@ class HotelService:
                 check_out_date = datetime.strptime(check_out, "%Y-%m-%d")
                 check_in_formatted = check_in_date.strftime("%d.%m.%Y")
                 check_out_formatted = check_out_date.strftime("%d.%m.%Y")
-                search_info = f"📅 Zeitraum: {check_in_formatted} bis {check_out_formatted}\n👥 Personen: {guests}\n\n"
+                search_info = f"Zeitraum: {check_in_formatted} bis {check_out_formatted}\n Personen: {guests}\n\n"
             except:
-                search_info = f"📅 Zeitraum: {check_in} bis {check_out}\n👥 Personen: {guests}\n\n"
+                search_info = f"Zeitraum: {check_in} bis {check_out}\n Personen: {guests}\n\n"
         
         # Hauptlink zur Datenquelle (Google Hotels) mit spezifischer Stadt
         location_encoded = location.replace(' ', '+')
-        main_source_link = f"🔗 Datenquelle: https://www.google.com/travel/hotels?q={location_encoded}\n\n"
+        main_source_link = f"Datenquelle: https://www.google.com/travel/hotels?q={location_encoded}\n\n"
         
-        summary = f"{search_info}{main_source_link}Gefunden: {len(hotels_sorted)} gut bewertete Hotels (sortiert nach Preis)\n\n"
+        # Bestimme die Anzahl der anzuzeigenden Hotels (maximal 5)
+        hotels_to_show = min(5, len(hotels_sorted))
+        summary = f"{search_info}{main_source_link}Gefunden: {hotels_to_show} gut bewertete Hotels (sortiert nach Preis)\n\n"
         
         for i, hotel in enumerate(hotels_sorted[:5], 1):  # Maximal 5 Hotels anzeigen
             name = hotel.get('name', 'Unbekanntes Hotel')
@@ -419,8 +421,6 @@ class HotelService:
                 try:
                     aria_label = a.get_attribute('aria-label')
                     logger.info(f"Verarbeite aria-label {i+1}: '{aria_label}'")
-                    # Beispiel: 'Preise ab 42 € für MEININGER Hotel München Olympiapark'
-                    # Angepasstes Pattern für verschiedene Leerzeichen-Varianten
                     match = re.search(r'Preise ab (\d+(?:[.,]\d+)?)\s*€\s+für\s+(.+)', aria_label)
                     if match:
                         price = float(match.group(1).replace(',', '.'))
@@ -441,20 +441,9 @@ class HotelService:
                         google_hotels_url = f"https://www.google.com/travel/hotels?q={name_safe}+{location_safe}&checkin={check_in}&checkout={check_out}&adults={guests}&hl=de&gl=de&curr=EUR"
                         
                         hotels.append({
-                            'id': f'hotel_{hash(name) % 10000}',
                             'name': name,
                             'price': price,
-                            'currency': 'EUR',
                             'rating': 0,
-                            'address': '',
-                            'city': location,
-                            'postal_code': '',
-                            'country': 'Deutschland',
-                            'phone': '',
-                            'website': '',
-                            'amenities': [],
-                            'description': f'Hotel in {location}',
-                            'image_url': '',
                             'booking_links': {
                                 'Google Hotels': google_hotels_url
                             }

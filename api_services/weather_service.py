@@ -157,10 +157,13 @@ class WeatherService:
     def get_weather_summary(self, location: str) -> str:
         weather = self.get_weather(location)
         
-        if 'note' in weather:
-            return f"Wetter in {location}: {weather['description']} bei {weather['temperature']}°C (Simulation)"
+        # Ortsname großschreiben
+        location_title = location.title()
         
-        summary = f"Wetter in {location}:\n"
+        if 'note' in weather:
+            return f"Wetter in {location_title}: {weather['description']} bei {weather['temperature']}°C (Simulation)"
+        
+        summary = f"Wetter in {location_title}:\n"
         summary += f"• Temperatur: {weather['temperature']}°C (gefühlt {weather['feels_like']}°C)\n"
         summary += f"• Beschreibung: {weather['description'].title()}\n"
         summary += f"• Luftfeuchtigkeit: {weather['humidity']}%\n"

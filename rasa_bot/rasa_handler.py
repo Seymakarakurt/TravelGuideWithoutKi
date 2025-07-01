@@ -133,18 +133,24 @@ class RasaHandler:
         if intent == 'get_weather':
 
             weather_patterns = [
-                r'\b(wetter|wettervorhersage|temperatur)\s+(in|für|von)\s+([a-zA-Zäöüß\s]+)\b',
-                r'\b(wie ist das wetter)\s+(in|für|von)\s+([a-zA-Zäöüß\s]+)\b',
-                r'\b(wetter|temperatur)\s+([a-zA-Zäöüß\s]+)\b',
-                r'\b(regnet|sonnig|kalt|warm)\s+(in|für)\s+([a-zA-Zäöüß\s]+)\b'
+                r'\b(wetter|wettervorhersage|temperatur)\s+(in|für|von)\s+([a-zA-Zäöüß]+(?:\s+[a-zA-Zäöüß]+)*?)(?:\s+(?:abfragen|suchen|finden|checken|prüfen))?\b',
+                r'\b(wie ist das wetter)\s+(in|für|von)\s+([a-zA-Zäöüß]+(?:\s+[a-zA-Zäöüß]+)*?)(?:\s+(?:abfragen|suchen|finden|checken|prüfen))?\b',
+                r'\b(wetter|temperatur)\s+([a-zA-Zäöüß]+(?:\s+[a-zA-Zäöüß]+)*?)(?:\s+(?:abfragen|suchen|finden|checken|prüfen))?\b',
+                r'\b(regnet|sonnig|kalt|warm)\s+(in|für)\s+([a-zA-Zäöüß]+(?:\s+[a-zA-Zäöüß]+)*?)(?:\s+(?:abfragen|suchen|finden|checken|prüfen))?\b'
             ]
             for pattern in weather_patterns:
                 matches = re.findall(pattern, message)
                 if matches:
                     if len(matches[0]) == 3:
-                        entities['weather_location'] = matches[0][2].strip()
+                        location = matches[0][2].strip()
                     elif len(matches[0]) == 2:
-                        entities['weather_location'] = matches[0][1].strip()
+                        location = matches[0][1].strip()
+                    else:
+                        continue
+                    
+                    # Entferne Wörter wie "abfragen", "suchen", etc. am Ende
+                    location = re.sub(r'\s+(?:abfragen|suchen|finden|checken|prüfen)$', '', location, flags=re.IGNORECASE)
+                    entities['weather_location'] = location.strip()
                     break
         
         elif intent == 'provide_destination':

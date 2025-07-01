@@ -220,7 +220,7 @@ class TravelGuideDecisionLogic:
                 'Wie ist das Wetter in Wien?',
                 'Hotels in Barcelona finden',
                 'Hotels in Kopenhagen finden',
-                'Wetter in Prag abfragen',
+                'Wetter in London abfragen',
                 'Unterkunft in Stockholm suchen'
             ]
         }
@@ -235,7 +235,7 @@ class TravelGuideDecisionLogic:
                 'Wie ist das Wetter in Wien?',
                 'Hotels in Barcelona finden',
                 'Hotels in Kopenhagen finden',
-                'Wetter in Prag abfragen',
+                'Wetter in London abfragen',
                 'Unterkunft in Stockholm suchen'
             ]
         }
@@ -608,7 +608,7 @@ Budget-Tipps:
                 'Wie ist das Wetter in Wien?',
                 'Hotels in Barcelona finden',
                 'Hotels in Kopenhagen finden',
-                'Wetter in Prag abfragen',
+                'Wetter in London abfragen',
                 'Unterkunft in Stockholm suchen'
                 ]
             }

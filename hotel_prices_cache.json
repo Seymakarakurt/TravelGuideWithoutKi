@@ -1,1799 +1,293 @@
 {
   "barcelona_2025-07-01_2025-07-08_1": [
     {
-      "id": "hotel_6994",
-      "name": "HelloBCN Hostel Barcelona",
-      "price": 61.0,
-      "currency": "EUR",
+      "name": "Leevin Barcelona",
+      "price": 64.0,
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=HelloBCN+Hostel+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Leevin+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_6426",
-      "name": "Zero Barcelona",
-      "price": 63.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Zero+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1614",
-      "name": "The Loft Hostel Barcelona",
+      "name": "Urbany Hostel BCN GO!",
       "price": 75.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Loft+Hostel+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Urbany+Hostel+BCN+GO!+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_2158",
       "name": "Generator Barcelona",
       "price": 84.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Generator+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_3953",
-      "name": "Sercotel Porta Barcelona",
-      "price": 92.0,
-      "currency": "EUR",
+      "name": "AMISTAT City Hostel Barcelona",
+      "price": 87.0,
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Sercotel+Porta+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=AMISTAT+City+Hostel+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_9294",
       "name": "easyHotel Barcelona Fira",
       "price": 93.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=easyHotel+Barcelona+Fira+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_8207",
       "name": "ibis Styles Barcelona Sant Joan Despi",
       "price": 94.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=ibis+Styles+Barcelona+Sant+Joan+Despi+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_38",
-      "name": "Hotel Viladomat",
+      "name": "The Central House Barcelona Gracia",
+      "price": 95.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Central+House+Barcelona+Gracia+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "ibis Barcelona Santa Coloma",
+      "price": 96.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=ibis+Barcelona+Santa+Coloma+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Torres Porta Fira",
       "price": 111.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Viladomat+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Torres+Porta+Fira+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_9343",
-      "name": "Evenia Rocafort",
-      "price": 113.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Evenia+Rocafort+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5187",
       "name": "Hotel SB | Plaça Europa",
       "price": 118.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+SB+|+Plaça+Europa+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_3373",
-      "name": "Hotel Sagrada Família",
-      "price": 123.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Sagrada+Família+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_635",
       "name": "Hotel Front Maritim Barcelona",
       "price": 125.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Front+Maritim+Barcelona+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_660",
-      "name": "Hotel NH Barcelona Diagonal Center",
-      "price": 126.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+NH+Barcelona+Diagonal+Center+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6005",
-      "name": "AC Hotel Barcelona Forum",
-      "price": 129.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=AC+Hotel+Barcelona+Forum+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_960",
       "name": "Hotel Barcelona Princess",
       "price": 141.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Barcelona+Princess+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_1401",
-      "name": "Negresco Princess",
-      "price": 155.0,
-      "currency": "EUR",
+      "name": "Hotel Barcelona Universal",
+      "price": 141.0,
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Negresco+Princess+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Barcelona+Universal+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_1440",
+      "name": "AC Hotel Barcelona Forum",
+      "price": 142.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=AC+Hotel+Barcelona+Forum+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Sercotel Rosellón",
+      "price": 162.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Sercotel+Rosellón+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
       "name": "45 Times Barcelona Hotel",
       "price": 186.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=45+Times+Barcelona+Hotel+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_8209",
+      "name": "Hotel SB Glow",
+      "price": 200.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+SB+Glow+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
       "name": "W Barcelona Hotel",
       "price": 334.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "barcelona",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in barcelona",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=W+Barcelona+Hotel+barcelona&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     }
   ],
-  "berlin_2025-07-01_2025-07-08_1": [
-    {
-      "id": "hotel_7801",
-      "name": "MEININGER Hotel Berlin Tiergarten",
-      "price": 46.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=MEININGER+Hotel+Berlin+Tiergarten+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_9455",
-      "name": "MEININGER Hotel Berlin Central Station",
-      "price": 53.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=MEININGER+Hotel+Berlin+Central+Station+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_2133",
-      "name": "Moxy Hotel Berlin Brandenburg Airport BER",
-      "price": 59.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Moxy+Hotel+Berlin+Brandenburg+Airport+BER+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_7577",
-      "name": "B&B HOTEL Berlin City-West",
-      "price": 70.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=B&B+HOTEL+Berlin+City-West+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_3263",
-      "name": "Premier Inn Berlin City Wilmersdorf Hotel",
-      "price": 74.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Premier+Inn+Berlin+City+Wilmersdorf+Hotel+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_201",
-      "name": "Hotel NH Berlin Kurfürstendamm",
-      "price": 77.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+NH+Berlin+Kurfuerstendamm+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1583",
-      "name": "Hotel Berlin, Berlin",
-      "price": 81.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Berlin,+Berlin+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5949",
-      "name": "Park Inn by Radisson Berlin Alexanderplatz Hotel",
-      "price": 90.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Park+Inn+by+Radisson+Berlin+Alexanderplatz+Hotel+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_7254",
-      "name": "Steigenberger Hotel am Kanzleramt",
-      "price": 98.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Steigenberger+Hotel+am+Kanzleramt+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5030",
-      "name": "Titanic Chaussee Berlin",
-      "price": 99.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Titanic+Chaussee+Berlin+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_940",
-      "name": "Hotel AMANO Grand Central - Berlin Hbf",
-      "price": 101.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+AMANO+Grand+Central+-+Berlin+Hbf+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5681",
-      "name": "Hotel Motel One Berlin-Upper West",
-      "price": 106.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Motel+One+Berlin-Upper+West+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5119",
-      "name": "Hotel Eurostars Berlin",
-      "price": 106.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Eurostars+Berlin+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_4315",
-      "name": "Hilton Berlin",
-      "price": 120.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hilton+Berlin+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_7171",
-      "name": "Titanic Gendarmenmarkt Berlin",
-      "price": 126.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Titanic+Gendarmenmarkt+Berlin+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_303",
-      "name": "Grand Hyatt Berlin",
-      "price": 162.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Grand+Hyatt+Berlin+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_2995",
-      "name": "The Ritz-Carlton",
-      "price": 233.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "berlin",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in berlin",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Ritz-Carlton+berlin&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    }
-  ],
-  "kopenhagen_2025-07-01_2025-07-08_1": [
-    {
-      "id": "hotel_6793",
-      "name": "Danhostel Copenhagen City",
-      "price": 56.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Danhostel+Copenhagen+City+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1442",
-      "name": "Steel House Copenhagen",
-      "price": 65.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Steel+House+Copenhagen+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6778",
-      "name": "Saga Hotel",
-      "price": 94.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Saga+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1677",
-      "name": "Wakeup Copenhagen",
-      "price": 100.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Wakeup+Copenhagen+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_8903",
-      "name": "Hotel Sct. Thomas",
-      "price": 127.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Sct.+Thomas+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_9185",
-      "name": "Cabinn City",
-      "price": 127.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Cabinn+City+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6327",
-      "name": "Savoy Hotel",
-      "price": 135.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Savoy+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_7468",
-      "name": "AC Hotel Bella Sky",
-      "price": 146.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=AC+Hotel+Bella+Sky+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_9573",
-      "name": "Axel Guldsmeden Hotel",
-      "price": 152.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Axel+Guldsmeden+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5174",
-      "name": "66 Guldsmeden",
-      "price": 152.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=66+Guldsmeden+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_855",
-      "name": "Tivoli Hotel",
-      "price": 165.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Tivoli+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1501",
-      "name": "Bryggen Guldsmeden Hotel",
-      "price": 165.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Bryggen+Guldsmeden+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_4256",
-      "name": "Absalon Hotel",
-      "price": 168.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Absalon+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_3169",
-      "name": "The Square",
-      "price": 171.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Square+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_4456",
-      "name": "Hotel Motel One Kopenhagen",
-      "price": 172.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Motel+One+Kopenhagen+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_2942",
-      "name": "Scandic Copenhagen",
-      "price": 197.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Scandic+Copenhagen+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5624",
-      "name": "Copenhagen Island Hotel",
-      "price": 217.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Copenhagen+Island+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6378",
-      "name": "Scandic Palace Hotel",
-      "price": 218.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "kopenhagen",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in kopenhagen",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Scandic+Palace+Hotel+kopenhagen&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    }
-  ],
   "london_2025-07-01_2025-07-08_1": [
     {
-      "id": "hotel_9056",
       "name": "Safestay London Kensington Holland Park",
       "price": 22.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Safestay+London+Kensington+Holland+Park+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_2456",
-      "name": "YHA London Thameside",
-      "price": 35.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=YHA+London+Thameside+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_2574",
-      "name": "St Christopher's Inn London Bridge - The Village",
-      "price": 41.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=St+Christopher's+Inn+London+Bridge+-+The+Village+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_8455",
-      "name": "Travelodge London Chessington Tolworth",
-      "price": 42.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Travelodge+London+Chessington+Tolworth+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_4820",
       "name": "Smart Hyde Park Inn",
-      "price": 43.0,
-      "currency": "EUR",
+      "price": 41.0,
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Smart+Hyde+Park+Inn+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_245",
       "name": "Smart Hyde Park View",
       "price": 46.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Smart+Hyde+Park+View+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_9435",
       "name": "Britannia Inn Hotel",
       "price": 46.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Britannia+Inn+Hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_4772",
-      "name": "Peckham Rooms Hotel by Belvilla",
-      "price": 51.0,
-      "currency": "EUR",
+      "name": "The Green Man, Paddington (PUBLOVE)",
+      "price": 59.0,
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Peckham+Rooms+Hotel+by+Belvilla+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Green+Man,+Paddington+(PUBLOVE)+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_3252",
+      "name": "Kip Hotel",
+      "price": 60.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Kip+Hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
       "name": "Britannia International Hotel",
       "price": 61.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Britannia+International+Hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_3058",
       "name": "Premier Inn London Croydon Town Centre hotel",
       "price": 61.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Premier+Inn+London+Croydon+Town+Centre+hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_2185",
-      "name": "The Rose & Crown, London Bridge (PUBLOVE)",
-      "price": 64.0,
-      "currency": "EUR",
+      "name": "Premier Inn London Edgware hotel",
+      "price": 61.0,
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Rose+&+Crown,+London+Bridge+(PUBLOVE)+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Premier+Inn+London+Edgware+hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_5053",
+      "name": "City Gate guest house",
+      "price": 62.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=City+Gate+guest+house+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
       "name": "ibis London Stratford",
       "price": 65.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=ibis+London+Stratford+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_324",
       "name": "Premier Inn London Tolworth hotel",
       "price": 72.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Premier+Inn+London+Tolworth+hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_6693",
       "name": "Travelodge London Central Elephant and Castle",
       "price": 83.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Travelodge+London+Central+Elephant+and+Castle+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_2998",
-      "name": "Travelodge London Central City Road",
-      "price": 104.0,
-      "currency": "EUR",
+      "name": "Zedwell Underground Tottenham Court Road",
+      "price": 106.0,
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Travelodge+London+Central+City+Road+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Zedwell+Underground+Tottenham+Court+Road+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_2723",
       "name": "Zedwell Piccadilly Circus",
       "price": 129.0,
-      "currency": "EUR",
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Zedwell+Piccadilly+Circus+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     },
     {
-      "id": "hotel_2421",
-      "name": "Grange St. Paul's Hotel",
-      "price": 177.0,
-      "currency": "EUR",
+      "name": "hub by Premier Inn London Westminster Abbey hotel",
+      "price": 142.0,
       "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=hub+by+Premier+Inn+London+Westminster+Abbey+hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "H10 London Waterloo",
+      "price": 165.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=H10+London+Waterloo+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Grange St. Paul's Hotel",
+      "price": 178.0,
+      "rating": 0,
       "booking_links": {
         "Google Hotels": "https://www.google.com/travel/hotels?q=Grange+St.+Paul's+Hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5574",
-      "name": "One Hundred Shoreditch",
-      "price": 184.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "london",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in london",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=One+Hundred+Shoreditch+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    }
-  ],
-  "marid_2025-07-01_2025-07-08_1": [
-    {
-      "id": "hotel_8197",
-      "name": "Hotel Pirol",
-      "price": 120.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "marid",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in marid",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Pirol+marid&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1403",
-      "name": "SensCity Hotel Berlin Spandau",
-      "price": 164.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "marid",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in marid",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=SensCity+Hotel+Berlin+Spandau+marid&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1281",
-      "name": "Hotel Benn",
-      "price": 207.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "marid",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in marid",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Benn+marid&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_3424",
-      "name": "Hotel VITA Berlin",
-      "price": 233.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "marid",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in marid",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+VITA+Berlin+marid&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1253",
-      "name": "Hotel Bohemia",
-      "price": 270.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "marid",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in marid",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Bohemia+marid&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    }
-  ],
-  "dresden_2025-07-01_2025-07-08_1": [
-    {
-      "id": "hotel_8677",
-      "name": "MEININGER Hotel Dresden Zentrum",
-      "price": 33.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=MEININGER+Hotel+Dresden+Zentrum+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1907",
-      "name": "a&o Hostel Dresden Hauptbahnhof",
-      "price": 41.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=a&o+Hostel+Dresden+Hauptbahnhof+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_8338",
-      "name": "ibis budget Dresden Kesselsdorf",
-      "price": 47.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=ibis+budget+Dresden+Kesselsdorf+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_2120",
-      "name": "NOVALIS Hotel by AURUM Dresden",
-      "price": 56.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=NOVALIS+Hotel+by+AURUM+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_4975",
-      "name": "Ibis Budget Hotel",
-      "price": 56.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Ibis+Budget+Hotel+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6394",
-      "name": "Hotel NH Dresden Neustadt",
-      "price": 61.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+NH+Dresden+Neustadt+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_4189",
-      "name": "ibis",
-      "price": 62.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=ibis+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_3026",
-      "name": "Premier Inn Dresden City Zentrum Hotel",
-      "price": 64.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Premier+Inn+Dresden+City+Zentrum+Hotel+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_2610",
-      "name": "IntercityHotel Dresden",
-      "price": 64.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=IntercityHotel+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_9017",
-      "name": "Premier Inn Dresden City Prager Straße Hotel",
-      "price": 64.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Premier+Inn+Dresden+City+Prager+Strasse+Hotel+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_5682",
-      "name": "Restaurant & Pension Dresdner Panorama",
-      "price": 65.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Restaurant+&+Pension+Dresdner+Panorama+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_384",
-      "name": "Hotel Elbflorenz Dresden",
-      "price": 68.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Elbflorenz+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_792",
-      "name": "Hotel Occidental Dresden Newa",
-      "price": 72.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Occidental+Dresden+Newa+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6563",
-      "name": "City Hotel Dresden Radebeul",
-      "price": 72.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=City+Hotel+Dresden+Radebeul+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_3428",
-      "name": "Bilderberg Bellevue Hotel Dresden",
-      "price": 80.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Bilderberg+Bellevue+Hotel+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_3474",
-      "name": "Taste Hotel Dresden",
-      "price": 82.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Taste+Hotel+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_1879",
-      "name": "Maritim Hotel Dresden",
-      "price": 87.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Maritim+Hotel+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
-      }
-    },
-    {
-      "id": "hotel_6017",
-      "name": "Hilton Dresden",
-      "price": 109.0,
-      "currency": "EUR",
-      "rating": 0,
-      "address": "",
-      "city": "dresden",
-      "postal_code": "",
-      "country": "Deutschland",
-      "phone": "",
-      "website": "",
-      "amenities": [],
-      "description": "Hotel in dresden",
-      "image_url": "",
-      "booking_links": {
-        "Google Hotels": "https://www.google.com/travel/hotels?q=Hilton+Dresden+dresden&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     }
   ]
