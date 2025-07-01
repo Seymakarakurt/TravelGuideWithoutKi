@@ -1,258 +1,369 @@
 import os
-import requests
 import logging
+import json
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta
+import re
+import time
+import random
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 
 logger = logging.getLogger(__name__)
 
 class FlightService:
     def __init__(self):
-        self.client_id = os.getenv('AMADEUS_CLIENT_ID')
-        self.client_secret = os.getenv('AMADEUS_CLIENT_SECRET')
-        self.base_url = "https://test.api.amadeus.com/v2"
+        # Cache für gespeicherte Flugpreise
+        self.price_cache = {}
+        self.cache_file = 'flight_prices_cache.json'
+        self._load_cache()
         
-        if not self.client_id or not self.client_secret:
-            logger.warning("Amadeus API Credentials nicht gefunden")
-            self.access_token = None
-        else:
-            self.access_token = self._get_access_token()
-            if not self.access_token:
-                logger.warning("Amadeus API Token konnte nicht geholt werden")
+        # Selenium WebDriver Setup
+        self.driver = None
     
-    def _get_access_token(self) -> Optional[str]:
+    def _load_cache(self):
+        """Lädt gespeicherte Flugpreise aus der Cache-Datei"""
         try:
-            url = "https://test.api.amadeus.com/v1/security/oauth2/token"
-            headers = {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-            data = {
-                'grant_type': 'client_credentials',
-                'client_id': self.client_id,
-                'client_secret': self.client_secret
-            }
-            
-            response = requests.post(url, headers=headers, data=data, timeout=10)
-            response.raise_for_status()
-            
-            token_data = response.json()
-            return token_data.get('access_token')
-            
+            if os.path.exists(self.cache_file):
+                with open(self.cache_file, 'r', encoding='utf-8') as f:
+                    self.price_cache = json.load(f)
+                logger.info(f"Flug-Cache geladen: {len(self.price_cache)} Einträge")
         except Exception as e:
-            logger.error(f"Fehler beim Token-Holen: {e}")
-            return None
+            logger.error(f"Fehler beim Laden des Flug-Caches: {e}")
+            self.price_cache = {}
+    
+    def _save_cache(self):
+        """Speichert Flugpreise in die Cache-Datei"""
+        try:
+            with open(self.cache_file, 'w', encoding='utf-8') as f:
+                json.dump(self.price_cache, f, ensure_ascii=False, indent=2)
+            logger.info(f"Flug-Cache gespeichert: {len(self.price_cache)} Einträge")
+        except Exception as e:
+            logger.error(f"Fehler beim Speichern des Flug-Caches: {e}")
+    
+    def _get_cache_key(self, origin: str, destination: str, start_date: str, end_date: str = None) -> str:
+        """Erstellt einen eindeutigen Cache-Schlüssel"""
+        if end_date:
+            return f"{origin}_{destination}_{start_date}_{end_date}"
+        else:
+            return f"{origin}_{destination}_{start_date}"
     
     def search_flights(self, origin: str, destination: str, start_date: Optional[str] = None, 
-                      end_date: Optional[str] = None, budget: Optional[int] = None) -> List[Dict[str, Any]]:
-
+                      end_date: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Sucht Flüge mit Selenium WebScraping"""
         try:
-            if not self.access_token:
-                return []
+            # Standard-Daten für Start-Datum
+            if not start_date:
+                start_date = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
             
-
-            departure_date = self._format_date(start_date) if start_date else (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d")
-            return_date = self._format_date(end_date) if end_date else None
+            # Cache-Key erstellen
+            cache_key = self._get_cache_key(origin, destination, start_date, end_date)
             
-
-            outbound_flights = self._search_amadeus_flights(origin, destination, departure_date, None, budget)
+            # Prüfe Cache
+            if cache_key in self.price_cache:
+                cached_data = self.price_cache[cache_key]
+                logger.info(f"Flüge aus Cache geladen für {origin} -> {destination}")
+                
+                # Kompatibilität mit altem Cache-Format
+                if isinstance(cached_data, dict) and 'flights' in cached_data:
+                    # Altes Format: {"flights": [...], "timestamp": ...}
+                    cached_flights = cached_data['flights']
+                    logger.info(f"Altes Cache-Format erkannt: {len(cached_flights)} Flüge")
+                else:
+                    # Neues Format: direkt die Flug-Liste
+                    cached_flights = cached_data
+                    logger.info(f"Neues Cache-Format erkannt: {len(cached_flights)} Flüge")
+                
+                # Sortiere nach Preis (günstig bis teuer)
+                cached_flights.sort(key=lambda x: x.get('price', 0))
+                
+                return cached_flights
             
-
-            return_flights = []
-            if return_date:
-                return_flights = self._search_amadeus_flights(destination, origin, return_date, None, budget)
-
-                for flight in return_flights:
-                    flight['return_flight'] = True
+            logger.info(f"Starte Selenium-Webscraping für Flüge {origin} -> {destination}")
             
-
-            all_flights = outbound_flights + return_flights
+            # Verwende Selenium für Webscraping
+            flights = self._search_flights_with_selenium(origin, destination, start_date, end_date)
             
-            return all_flights
+            # Sortiere nach Preis (günstig bis teuer)
+            flights.sort(key=lambda x: x.get('price', 0))
+            
+            # Speichere in Cache (neues Format: direkt die Flug-Liste)
+            if flights:
+                self.price_cache[cache_key] = flights
+                self._save_cache()
+                logger.info(f"Flüge in Cache gespeichert: {len(flights)} Flüge")
+            
+            logger.info(f"{len(flights)} Flüge gefunden für {origin} -> {destination} (sortiert nach Preis)")
+            return flights
             
         except Exception as e:
             logger.error(f"Fehler bei der Flugsuche: {e}")
             return []
     
-    def _search_amadeus_flights(self, origin: str, destination: str, departure_date: str, 
-                               return_date: Optional[str] = None, budget: Optional[int] = None) -> List[Dict[str, Any]]:
-
+    def _search_flights_with_selenium(self, origin: str, destination: str, start_date: str, end_date: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Sucht Flüge mit Selenium WebDriver"""
         try:
-            url = f"{self.base_url}/shopping/flight-offers"
+            if not self._setup_selenium_driver():
+                return []
             
-
-            origin_code = self._get_airport_code(origin)
-            destination_code = self._get_airport_code(destination)
+            # Öffne Google Flights
+            self.driver.get("https://www.google.com/travel/flights")
+            self._human_like_delay(2, 4)
             
-            params = {
-                'originLocationCode': origin_code,
-                'destinationLocationCode': destination_code,
-                'departureDate': departure_date,
-                'adults': 1,
-                'max': 10,
-                'currencyCode': 'EUR'
-            }
+            # Cookie-Banner akzeptieren
+            self._accept_cookies()
             
-            if return_date:
-                params['returnDate'] = return_date
+            # Warte auf die Seite zu laden
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.TAG_NAME, "body"))
+            )
             
-            headers = {
-                'Authorization': f'Bearer {self.access_token}',
-                'Content-Type': 'application/json'
-            }
+            # Warte, bis kein Overlay mehr sichtbar ist
+            try:
+                WebDriverWait(self.driver, 5).until_not(
+                    EC.visibility_of_element_located((By.CSS_SELECTOR, ".VfPpkd-RLmnJb"))
+                )
+                logger.info("Overlay '.VfPpkd-RLmnJb' ist verschwunden.")
+            except Exception:
+                logger.info("Kein Overlay '.VfPpkd-RLmnJb' sichtbar oder bereits verschwunden.")
             
-            logger.info(f"Suche Flüge: {origin_code} -> {destination_code} am {departure_date}")
-            response = requests.get(url, params=params, headers=headers, timeout=30)
-            response.raise_for_status()
-            
-            data = response.json()
-            flights = []
-            seen_flights = set()
-            
-            for flight in data.get('data', []):
-                flight_info = self._parse_amadeus_flight_data(flight)
-                if flight_info:
-                    flight_key = (
-                        flight_info.get('airline', ''),
-                        flight_info.get('flight_number', ''),
-                        flight_info.get('departure_time', ''),
-                        flight_info.get('price', 0)
+            # Suche nach Flügen
+            try:
+                # Klicke auf "Von" Feld
+                from_field = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, "input[placeholder*='Von'], input[aria-label*='Von'], input[name*='origin']"))
+                )
+                self._click_element_safely(from_field, "Von-Feld")
+                
+                # Lösche vorhandenen Text und tippe Abflugort
+                from_field.clear()
+                self._human_like_delay(0.5, 1)
+                
+                for char in origin:
+                    from_field.send_keys(char)
+                    time.sleep(random.uniform(0.05, 0.15))
+                
+                self._human_like_delay(1, 2)
+                
+                # Wähle den ersten Vorschlag
+                try:
+                    suggestions = WebDriverWait(self.driver, 3).until(
+                        EC.presence_of_all_elements_located((By.CSS_SELECTOR, "ul[role='listbox'] li, .aajZCb li, .erkvQe li"))
                     )
-                    
-                    if flight_key not in seen_flights:
-                        seen_flights.add(flight_key)
-                        flights.append(flight_info)
+                    if suggestions:
+                        self._click_element_safely(suggestions[0], "Abflugort-Vorschlag")
+                        self._human_like_delay(1, 2)
+                except Exception as e:
+                    logger.info(f"Keine Abflugort-Vorschläge gefunden: {e}")
+                    from_field.send_keys(Keys.ENTER)
+                    self._human_like_delay(1, 2)
+                
+                # Klicke auf "Nach" Feld
+                to_field = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, "input[placeholder*='Nach'], input[aria-label*='Nach'], input[name*='destination']"))
+                )
+                self._click_element_safely(to_field, "Nach-Feld")
+                
+                # Lösche vorhandenen Text und tippe Zielort
+                to_field.clear()
+                self._human_like_delay(0.5, 1)
+                
+                for char in destination:
+                    to_field.send_keys(char)
+                    time.sleep(random.uniform(0.05, 0.15))
+                
+                self._human_like_delay(1, 2)
+                
+                # Wähle den ersten Vorschlag
+                try:
+                    suggestions = WebDriverWait(self.driver, 3).until(
+                        EC.presence_of_all_elements_located((By.CSS_SELECTOR, "ul[role='listbox'] li, .aajZCb li, .erkvQe li"))
+                    )
+                    if suggestions:
+                        self._click_element_safely(suggestions[0], "Zielort-Vorschlag")
+                        self._human_like_delay(1, 2)
+                except Exception as e:
+                    logger.info(f"Keine Zielort-Vorschläge gefunden: {e}")
+                    to_field.send_keys(Keys.ENTER)
+                    self._human_like_delay(1, 2)
+                
+                # Klicke auf "Suchen" Button
+                search_button = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label*='Suchen'], button:contains('Suchen'), button[type='submit']"))
+                )
+                self._click_element_safely(search_button, "Suchen-Button")
+                
+            except Exception as e:
+                logger.warning(f"Fehler beim Suchen: {e}")
+            
+            # Warte auf Suchergebnisse
+            self._human_like_delay(5, 8)
+            
+            # Scroll durch die Ergebnisse
+            self._scroll_page()
+            
+            # Extrahiere Flüge aus den Suchergebnissen
+            flights = []
+            seen_flights = set()  # Set für eindeutige Flüge
+            
+            # Suche nach Flug-Karten
+            flight_cards = self.driver.find_elements(By.CSS_SELECTOR, "[class*='flight'], [class*='itinerary'], [data-flight-id]")
+            logger.info(f"Gefunden: {len(flight_cards)} Flug-Karten")
+            
+            for i, card in enumerate(flight_cards[:10]):  # Maximal 10 Flüge
+                try:
+                    flight_info = self._extract_flight_from_card(card, origin, destination, start_date)
+                    if flight_info:
+                        # Erstelle einen eindeutigen Schlüssel für den Flug
+                        flight_key = (
+                            flight_info.get('airline', ''),
+                            flight_info.get('departure_time', ''),
+                            flight_info.get('price', 0)
+                        )
+                        
+                        if flight_key not in seen_flights:
+                            seen_flights.add(flight_key)
+                            flights.append(flight_info)
+                            logger.info(f"Flug extrahiert: {flight_info.get('airline', '')} - {flight_info.get('price', 0)} EUR")
+                
+                except Exception as e:
+                    logger.warning(f"Fehler beim Extrahieren der Flug-Karte {i+1}: {e}")
+                    continue
+            
+            # Wenn keine Karten gefunden, versuche andere Selektoren
+            if not flights:
+                flights = self._extract_flights_from_list_view(origin, destination, start_date)
             
             return flights
             
         except Exception as e:
-            logger.error(f"Fehler bei Amadeus API: {e}")
+            logger.error(f"Fehler bei Selenium-Flugsuche: {e}")
             return []
+        
+        finally:
+            self._close_selenium_driver()
     
-    def _parse_amadeus_flight_data(self, flight: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-
+    def _extract_flight_from_card(self, card, origin: str, destination: str, start_date: str) -> Optional[Dict[str, Any]]:
+        """Extrahiert Flug-Daten aus einer Google Flights Karte"""
         try:
-
-            pricing = flight.get('pricingOptions', {})
-            price = pricing.get('fareBreakdowns', [{}])[0].get('includedCheckedBags', {}).get('weight', 0)
-            if not price:
-                price = flight.get('price', {}).get('total', 0)
+            # Alle sichtbaren Texte in der Karte
+            all_texts = [el.text.strip() for el in card.find_elements(By.XPATH, './/*') if el.text.strip()]
             
-
-            itineraries = flight.get('itineraries', [])
-            if not itineraries:
+            if not all_texts:
                 return None
             
-            outbound = itineraries[0].get('segments', [])
-            inbound = itineraries[1].get('segments', []) if len(itineraries) > 1 else []
+            # Preis-Extraktion: Suche nach Text mit '€'
+            price = 0
+            price_text = next((t for t in all_texts if '€' in t), None)
+            if price_text:
+                price_match = re.search(r'(\d+(?:[.,]\d+)?)', price_text.replace(',', '.'))
+                if price_match:
+                    price = float(price_match.group(1))
             
-
-            if not outbound:
-                return None
+            # Airline-Extraktion: Suche nach bekannten Airlines
+            airline = "Unbekannt"
+            airline_codes = ['LH', 'AF', 'BA', 'KL', 'IB', 'AZ', 'OS', 'LX', 'SK', 'AY', 'LO', 'TK', 'EK', 'QR', 'EY', 'FR', 'U2', 'W6']
+            for text in all_texts:
+                for code in airline_codes:
+                    if code in text:
+                        airline = self._get_airline_name(code)
+                        break
+                if airline != "Unbekannt":
+                    break
             
-            first_segment = outbound[0]
+            # Zeit-Extraktion: Suche nach Zeit-Format (HH:MM)
+            departure_time = ""
+            time_match = re.search(r'(\d{1,2}:\d{2})', ' '.join(all_texts))
+            if time_match:
+                departure_time = time_match.group(1)
             
-
-            duration = flight.get('itineraries', [{}])[0].get('duration', 'PT1H30M')
-            duration_hours = self._parse_duration(duration)
+            # Dauer-Extraktion: Suche nach "Xh Ym" Format
+            duration_hours = 1.5
+            duration_match = re.search(r'(\d+)h\s*(\d+)?m?', ' '.join(all_texts))
+            if duration_match:
+                hours = int(duration_match.group(1))
+                minutes = int(duration_match.group(2)) if duration_match.group(2) else 0
+                duration_hours = hours + (minutes / 60)
             
-
-            stops = len(outbound) - 1
+            # Stopps-Extraktion
+            stops = 0
+            if any('Direkt' in text or 'Direct' in text for text in all_texts):
+                stops = 0
+            elif any('1 Stopp' in text or '1 stop' in text for text in all_texts):
+                stops = 1
+            elif any('2 Stopps' in text or '2 stops' in text for text in all_texts):
+                stops = 2
             
-
-            departure_airport = first_segment.get('departure', {}).get('iataCode', '')
-            arrival_airport = first_segment.get('arrival', {}).get('iataCode', '')
-            departure_date = first_segment.get('departure', {}).get('at', '')[:10]
+            # URL-sichere Versionen
+            origin_safe = origin.replace(' ', '+').replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue').replace('ß', 'ss')
+            destination_safe = destination.replace(' ', '+').replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue').replace('ß', 'ss')
             
-            booking_links = self._create_booking_links(departure_airport, arrival_airport, departure_date)
+            # Google Flights URL mit Datum
+            google_flights_url = f"https://www.google.com/travel/flights?hl=de&tfs={origin_safe}_{destination_safe}_{start_date}"
             
             return {
-                'id': flight.get('id', ''),
-                'price': float(price) if price else 0,
-                'currency': flight.get('price', {}).get('currency', 'EUR'),
-                'airline': first_segment.get('carrierCode', ''),
-                'flight_number': f"{first_segment.get('carrierCode', '')}{first_segment.get('number', '')}",
-                'departure_airport': departure_airport,
-                'arrival_airport': arrival_airport,
-                'departure_time': first_segment.get('departure', {}).get('at', ''),
-                'arrival_time': first_segment.get('arrival', {}).get('at', ''),
+                'id': f'flight_{hash(f"{airline}{departure_time}{price}") % 10000}',
+                'price': price,
+                'currency': 'EUR',
+                'airline': airline,
+                'flight_number': f"{airline[:2]}{random.randint(100, 999)}",
+                'departure_airport': origin,
+                'arrival_airport': destination,
+                'departure_time': departure_time,
+                'arrival_time': '',
                 'duration_hours': duration_hours,
                 'stops': stops,
-                'return_flight': bool(inbound),
-                'booking_links': booking_links,
-                'airline_logo': f"https://images.kiwi.com/airlines/64/{first_segment.get('carrierCode', '')}.png"
+                'return_flight': False,
+                'booking_links': {
+                    'Google Flights': google_flights_url
+                },
+                'airline_logo': f"https://images.kiwi.com/airlines/64/{airline[:2]}.png"
             }
             
         except Exception as e:
-            logger.error(f"Fehler beim Parsen der Flugdaten: {e}")
+            logger.error(f"Fehler beim Extrahieren der Flug-Karte: {e}")
             return None
     
-    def _create_booking_links(self, origin: str, destination: str, date: str) -> Dict[str, str]:
-
+    def _extract_flights_from_list_view(self, origin: str, destination: str, start_date: str) -> List[Dict[str, Any]]:
+        """Extrahiert Flüge aus der Listen-Ansicht"""
         try:
-            links = {
-                'Google Flights': f"https://www.google.com/travel/flights?hl=de&tfs={origin}_{destination}_{date}"
-            }
+            flights = []
             
-            return links
+            # Suche nach Flug-Listen-Elementen
+            list_items = self.driver.find_elements(By.CSS_SELECTOR, 
+                "[class*='flight-item'], [class*='itinerary-item'], [class*='listing-item'], li")
             
-        except Exception as e:
-            logger.error(f"Fehler beim Erstellen der Buchungslinks: {e}")
-            return {}
-    
-    def _parse_duration(self, duration: str) -> float:
-
-        try:
-
-            hours = 0
-            minutes = 0
-            
-            if 'H' in duration:
-                hours = int(duration.split('H')[0].replace('PT', ''))
-            if 'M' in duration:
-                minutes_part = duration.split('H')[1] if 'H' in duration else duration.replace('PT', '')
-                minutes = int(minutes_part.replace('M', ''))
-            
-            return hours + (minutes / 60)
-        except:
-            return 1.5  
-    
-    def _format_date(self, date_str: str) -> str:
-
-        try:
-
-            for fmt in ['%d.%m.%Y', '%d.%m', '%Y-%m-%d', '%d/%m/%Y']:
+            for item in list_items[:5]:  # Maximal 5 Flüge
                 try:
-                    dt = datetime.strptime(date_str, fmt)
-                    if fmt == '%d.%m':
-                        dt = dt.replace(year=datetime.now().year)
+                    # Versuche Flug-Daten zu extrahieren
+                    all_texts = [el.text.strip() for el in item.find_elements(By.XPATH, './/*') if el.text.strip()]
                     
-
-                    if dt < datetime.now():
-
-                        dt = dt.replace(year=dt.year + 1)
-                    
-                    return dt.strftime('%Y-%m-%d')
-                except ValueError:
+                    if all_texts:
+                        flight_info = self._extract_flight_from_card(item, origin, destination, start_date)
+                        if flight_info:
+                            flights.append(flight_info)
+                
+                except Exception as e:
                     continue
             
-
-            return (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
+            return flights
             
         except Exception as e:
-            logger.error(f"Fehler beim Datumsformat: {e}")
-            return (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
+            logger.error(f"Fehler beim Extrahieren der Listen-Ansicht: {e}")
+            return []
     
     def get_flight_summary(self, flights: List[Dict[str, Any]]) -> str:
-
         if not flights:
-            return "Keine Flüge gefunden."
-        
+            return "Keine Flüge gefunden. Mögliche Gründe:\n• Keine direkten Flüge verfügbar\n• Falsche Flughafen-Codes\n• Keine Flüge für das gewählte Datum\n\nVersuchen Sie es mit einem anderen Datum oder Ziel."
 
         outbound_flights = [f for f in flights if not f.get('return_flight', False)]
         return_flights = [f for f in flights if f.get('return_flight', False)]
         
         summary = ""
-        
 
         if outbound_flights:
             summary += "Hinflüge:\n"
@@ -274,7 +385,6 @@ class FlightService:
                 if booking_links:
                     summary += f"   Buchung: {booking_links.get('Google Flights', '')}\n"
                 summary += "\n"
-        
 
         if return_flights:
             summary += "Rückflüge:\n"
@@ -339,26 +449,7 @@ class FlightService:
             'DY': 'Norwegian Air Shuttle',
             'FI': 'Icelandair',
             'PC': 'Pegasus Airlines',
-            'JU': 'Air Serbia',
-            'AY': 'Finnair',
-            'LO': 'LOT Polish Airlines',
-            'OK': 'Czech Airlines',
-            'MA': 'Malev',
-            'OA': 'Olympic Air',
-            'TK': 'Turkish Airlines',
-            'EK': 'Emirates',
-            'QR': 'Qatar Airways',
-            'EY': 'Etihad Airways',
-            'NH': 'ANA',
-            'JL': 'Japan Airlines',
-            'SQ': 'Singapore Airlines',
-            'TG': 'Thai Airways',
-            'QF': 'Qantas',
-            'AA': 'American Airlines',
-            'UA': 'United Airlines',
-            'DL': 'Delta Air Lines',
-            'AC': 'Air Canada',
-            'WS': 'WestJet'
+            'JU': 'Air Serbia'
         }
         
         return airline_names.get(airline_code.upper(), airline_code.upper())
@@ -379,7 +470,6 @@ class FlightService:
         try:
             if not departure_time:
                 return "Zeit unbekannt"
-            
 
             if 'T' in departure_time:
                 date_part, time_part = departure_time.split('T')
@@ -450,4 +540,164 @@ class FlightService:
             return airport_codes[first_word]
         
         # Fallback: Gib den ursprünglichen String zurück, aber nur die ersten 3 Zeichen
-        return city.upper()[:3] if len(city) >= 3 else city.upper() 
+        return city.upper()[:3] if len(city) >= 3 else city.upper()
+    
+    def test_connection(self) -> Dict[str, Any]:
+        """Testet die Verbindung und gibt Status-Informationen zurück"""
+        try:
+            # Teste mit einer einfachen Suche
+            test_origin = 'BER'
+            test_destination = 'CDG'
+            test_date = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
+            
+            logger.info(f"Teste Verbindung: {test_origin} -> {test_destination} am {test_date}")
+            
+            flights = self.search_flights(test_origin, test_destination, test_date)
+            
+            if flights:
+                return {
+                    'status': 'success',
+                    'message': f'Verbindung erfolgreich - {len(flights)} Test-Flüge gefunden',
+                    'details': f'Status: {len(flights)} Flüge gefunden'
+                }
+            else:
+                return {
+                    'status': 'error',
+                    'message': 'Keine Flüge gefunden',
+                    'details': 'Keine Flüge gefunden'
+                }
+                
+        except Exception as e:
+            return {
+                'status': 'error',
+                'message': f'Verbindungsfehler: {str(e)}',
+                'details': 'Exception beim Test'
+            }
+    
+    def _setup_selenium_driver(self):
+        """Richtet den Selenium WebDriver ein"""
+        try:
+            chrome_options = Options()
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+            chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            chrome_options.add_experimental_option('useAutomationExtension', False)
+            chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+            
+            # Headless-Modus für Server-Umgebung
+            chrome_options.add_argument('--headless')
+            
+            # Fenstergröße setzen
+            chrome_options.add_argument('--window-size=1920,1080')
+            
+            self.driver = webdriver.Chrome(options=chrome_options)
+            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+            
+            logger.info("Selenium WebDriver erfolgreich eingerichtet")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Fehler beim Einrichten des Selenium WebDrivers: {e}")
+            return False
+    
+    def _close_selenium_driver(self):
+        """Schließt den Selenium WebDriver"""
+        if self.driver:
+            try:
+                self.driver.quit()
+                self.driver = None
+                logger.info("Selenium WebDriver geschlossen")
+            except Exception as e:
+                logger.error(f"Fehler beim Schließen des WebDrivers: {e}")
+    
+    def _human_like_delay(self, min_seconds=1, max_seconds=3):
+        """Macht eine menschlich wirkende Verzögerung"""
+        time.sleep(random.uniform(min_seconds, max_seconds))
+    
+    def _scroll_page(self):
+        """Scrollt die Seite wie ein Mensch"""
+        try:
+            # Scroll nach unten
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
+            self._human_like_delay(1, 2)
+            
+            # Scroll weiter nach unten
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            self._human_like_delay(1, 2)
+            
+            # Scroll zurück nach oben
+            self.driver.execute_script("window.scrollTo(0, 0);")
+            self._human_like_delay(1, 2)
+            
+        except Exception as e:
+            logger.warning(f"Fehler beim Scrollen: {e}")
+    
+    def _click_element_safely(self, element, description=""):
+        """Klickt sicher auf ein Element"""
+        try:
+            # Scroll zum Element
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+            self._human_like_delay(0.5, 1)
+            
+            # Klicke auf das Element
+            element.click()
+            self._human_like_delay(1, 2)
+            
+            logger.info(f"Erfolgreich geklickt: {description}")
+            return True
+            
+        except Exception as e:
+            logger.warning(f"Fehler beim Klicken auf {description}: {e}")
+            return False
+    
+    def _accept_cookies(self):
+        """Akzeptiert den Cookie-Banner, falls vorhanden"""
+        try:
+            if not self.driver:
+                return False
+            # Warte auf Cookie-Banner (verschiedene Varianten)
+            possible_selectors = [
+                "button[aria-label*='Alle akzeptieren']",
+                "button[aria-label*='Accept all']",
+                "button[aria-label*='Zustimmen']",
+                "button[aria-label*='Ich stimme zu']",
+                "button[aria-label*='Agree']",
+                "button[aria-label*='Akzeptieren']",
+                "button[role='button'] span:contains('Alle akzeptieren')",
+                "button:contains('Alle akzeptieren')",
+                "button:contains('Accept all')",
+                "div[role='dialog'] button",
+            ]
+            for selector in possible_selectors:
+                try:
+                    cookie_btn = WebDriverWait(self.driver, 3).until(
+                        EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+                    )
+                    if cookie_btn:
+                        self._click_element_safely(cookie_btn, "Cookie-Banner")
+                        logger.info(f"Cookie-Banner akzeptiert mit Selektor: {selector}")
+                        self._human_like_delay(1, 2)
+                        return True
+                except Exception:
+                    continue
+            logger.info("Kein Cookie-Banner gefunden oder bereits akzeptiert.")
+            return False
+        except Exception as e:
+            logger.warning(f"Fehler beim Akzeptieren des Cookie-Banners: {e}")
+            return False
+    
+    def clear_cache(self):
+        """Löscht den Flug-Cache"""
+        self.price_cache = {}
+        if os.path.exists(self.cache_file):
+            os.remove(self.cache_file)
+        logger.info("Flug-Cache gelöscht")
+    
+    def get_cached_prices(self, origin: str, destination: str) -> List[Dict[str, Any]]:
+        """Gibt alle gecachten Preise für eine Route zurück"""
+        cached_flights = []
+        for cache_key, cache_data in self.price_cache.items():
+            if origin.lower() in cache_key.lower() and destination.lower() in cache_key.lower():
+                cached_flights.extend(cache_data)
+        return cached_flights 

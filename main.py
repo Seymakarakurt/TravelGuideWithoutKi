@@ -100,6 +100,157 @@ class TravelGuideApp:
                 'timestamp': datetime.now().isoformat(),
                 'version': '1.0.0'
             })
+        
+        @self.app.route('/api/test/flights', methods=['GET'])
+        def test_flights():
+            try:
+                # Teste API-Verbindung
+                api_status = self.flight_service.test_api_connection()
+                
+                return jsonify({
+                    'success': True,
+                    'api_status': api_status,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error testing flight API: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/test/hotels', methods=['GET'])
+        def test_hotels():
+            try:
+                # Teste Hotel-Webscraping
+                location = request.args.get('location', 'Berlin')
+                hotels = self.hotel_service.search_hotels(location=location)
+                
+                return jsonify({
+                    'success': True,
+                    'location': location,
+                    'hotels_found': len(hotels),
+                    'hotels': hotels[:3],  # Nur die ersten 3 Hotels
+                    'cache_info': {
+                        'cached_entries': len(self.hotel_service.price_cache),
+                        'cache_file': self.hotel_service.cache_file
+                    },
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error testing hotel API: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/test/hotels/scraping', methods=['GET'])
+        def test_hotel_scraping():
+            try:
+                # Teste direktes Webscraping ohne Cache
+                location = request.args.get('location', 'Berlin')
+                
+                # Cache löschen für Test
+                self.hotel_service.clear_cache()
+                
+                # Direktes Webscraping testen
+                hotels = self.hotel_service.search_hotels(location=location)
+                
+                return jsonify({
+                    'success': True,
+                    'location': location,
+                    'hotels_found': len(hotels),
+                    'hotels': hotels[:5],  # Zeige alle gefundenen Hotels
+                    'scraping_test': True,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error testing hotel scraping: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/test/hotels/debug', methods=['GET'])
+        def test_hotel_debug():
+            try:
+                # Teste Debug-Funktionalität
+                location = request.args.get('location', 'Berlin')
+                
+                # Cache löschen für Test
+                self.hotel_service.clear_cache()
+                
+                # Debug-Webscraping testen
+                hotels = self.hotel_service.search_hotels(location=location)
+                
+                return jsonify({
+                    'success': True,
+                    'location': location,
+                    'hotels_found': len(hotels),
+                    'hotels': hotels[:3],  # Zeige die ersten 3 Hotels
+                    'debug_mode': True,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error testing hotel debug: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/hotels/cache', methods=['GET'])
+        def get_hotel_cache():
+            try:
+                location = request.args.get('location', '')
+                
+                if location:
+                    # Zeige gecachte Hotels für einen spezifischen Ort
+                    cached_hotels = self.hotel_service.get_cached_prices(location)
+                    return jsonify({
+                        'success': True,
+                        'location': location,
+                        'cached_hotels': cached_hotels,
+                        'count': len(cached_hotels)
+                    })
+                else:
+                    # Zeige alle Cache-Einträge
+                    return jsonify({
+                        'success': True,
+                        'cache_entries': len(self.hotel_service.price_cache),
+                        'cache_keys': list(self.hotel_service.price_cache.keys()),
+                        'cache_file': self.hotel_service.cache_file
+                    })
+                
+            except Exception as e:
+                logger.error(f"Error getting hotel cache: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e)
+                }), 500
+        
+        @self.app.route('/api/hotels/cache/clear', methods=['POST'])
+        def clear_hotel_cache():
+            try:
+                self.hotel_service.clear_cache()
+                return jsonify({
+                    'success': True,
+                    'message': 'Hotel-Cache erfolgreich gelöscht'
+                })
+                
+            except Exception as e:
+                logger.error(f"Error clearing hotel cache: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e)
+                }), 500
     
     def run(self, host='0.0.0.0', port=5000, debug=False):
         logger.info("TravelGuide wird gestartet...")
