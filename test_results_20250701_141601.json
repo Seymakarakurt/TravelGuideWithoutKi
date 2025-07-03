@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-07-01T14:16:01.829701",
+  "total_tests": 16,
+  "passed_tests": 16,
+  "success_rate": 100.0,
+  "results": [
+    "✅ Test 1: Präferenzen erkannt",
+    "✅ Test 2: Präferenzen erkannt",
+    "✅ Test 3: Präferenzen erkannt",
+    "✅ Test 4: Präferenzen erkannt",
+    "✅ KI-Empfehlungsmaschine funktioniert",
+    "✅ Intent 'Meine Präferenzen ändern' korrekt erkannt",
+    "✅ Intent 'Weitere Präferenzen angeben' korrekt erkannt",
+    "✅ Intent 'Empfehlungen anzeigen' korrekt erkannt",
+    "✅ Intent 'Hotels in Paris finden' korrekt erkannt",
+    "✅ Intent 'Wetter in London' korrekt erkannt",
+    "✅ Intent 'Budget: günstig' korrekt erkannt",
+    "✅ Nachrichtenverarbeitung 1 erfolgreich",
+    "✅ Nachrichtenverarbeitung 2 erfolgreich",
+    "✅ Nachrichtenverarbeitung 3 erfolgreich",
+    "✅ Nachrichtenverarbeitung 4 erfolgreich",
+    "✅ Benutzerprofil-Management funktioniert"
+  ]
+}

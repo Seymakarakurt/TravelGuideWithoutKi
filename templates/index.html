@@ -187,6 +187,82 @@
             color: #2e7d32;
         }
 
+        .ai-recommendations {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .recommendation-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-stats {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .recommendation-stats span {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 12px;
+            color: #666;
+        }
+
+        .preference-panel {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        .preference-panel h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .preference-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .preference-option {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preference-option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .preference-option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .chat-container {
                 height: 90vh;
@@ -312,6 +388,12 @@
                 messageDiv.innerHTML = `<div class="error-message">${message}</div>`;
             } else if (type === 'success') {
                 messageDiv.innerHTML = `<div class="success-message">${message}</div>`;
+            } else if (type === 'ai_recommendations') {
+                messageDiv.innerHTML = `<div class="ai-recommendations">${message}</div>`;
+            } else if (type === 'preferences_updated') {
+                messageDiv.innerHTML = `<div class="success-message">${message}</div>`;
+            } else if (type === 'preference_help') {
+                messageDiv.innerHTML = `<div class="preference-panel">${message}</div>`;
             } else {
                 messageDiv.textContent = message;
             }
@@ -349,13 +431,153 @@
             }
         }
 
-        // Willkommensnachricht mit Vorschlägen
+        // KI-Empfehlungsfunktionen
+        function getAIRecommendations(preferences = {}) {
+            showLoading(true);
+            
+            fetch('/api/ai/recommendations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    preferences: preferences,
+                    num_recommendations: 3
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showLoading(false);
+                
+                if (data.success) {
+                    displayAIRecommendations(data.recommendations);
+                } else {
+                    addBotMessage('Entschuldigung, ich konnte keine Empfehlungen generieren.', [], 'error');
+                }
+            })
+            .catch(error => {
+                showLoading(false);
+                addBotMessage('Fehler bei der Empfehlungsgenerierung.', [], 'error');
+                console.error('Error:', error);
+            });
+        }
+
+        function displayAIRecommendations(recommendations) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            
+            let html = '<div class="ai-recommendations">';
+            html += '<h3>🤖 KI-gestützte Reiseempfehlungen</h3>';
+            
+            recommendations.forEach((rec, index) => {
+                html += `<div class="recommendation-card">
+                    <h4>${index + 1}. ${rec.destination}</h4>
+                    <div class="recommendation-stats">
+                        <span>🎯 ${rec.confidence_score} Übereinstimmung</span>
+                        <span>💰 ${rec.estimated_budget.total_weekly_per_person}€ pro Person/Woche</span>
+                        <span>🕒 ${rec.best_time_to_visit}</span>
+                    </div>
+                    <p><strong>Begründung:</strong> ${rec.reasoning}</p>
+                    <p><strong>Aktivitäten:</strong> ${rec.activities.join(', ')}</p>
+                </div>`;
+            });
+            
+            html += '</div>';
+            messageDiv.innerHTML = html;
+            chatMessages.appendChild(messageDiv);
+            
+            // Vorschläge hinzufügen
+            const suggestions = [
+                `Hotels in ${recommendations[0].destination} finden`,
+                `Flüge nach ${recommendations[0].destination} suchen`,
+                "Weitere Empfehlungen",
+                "Meine Präferenzen ändern"
+            ];
+            addSuggestionButtons(suggestions);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function updateUserPreferences(preferences) {
+            fetch('/api/ai/update-preferences', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    preferences: preferences
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    addBotMessage('Ihre Präferenzen wurden erfolgreich aktualisiert!', [
+                        'Empfehlungen anzeigen',
+                        'Weitere Präferenzen angeben'
+                    ], 'success');
+                } else {
+                    addBotMessage('Fehler beim Aktualisieren der Präferenzen.', [], 'error');
+                }
+            })
+            .catch(error => {
+                addBotMessage('Fehler beim Aktualisieren der Präferenzen.', [], 'error');
+                console.error('Error:', error);
+            });
+        }
+
+        function getUserProfile() {
+            fetch(`/api/ai/user-profile/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayUserProfile(data.profile);
+                } else {
+                    addBotMessage('Kein Benutzerprofil gefunden.', [], 'info');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function displayUserProfile(profile) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            
+            let html = '<div class="preference-panel">';
+            html += '<h3>👤 Ihr Benutzerprofil</h3>';
+            html += `<p><strong>Reiseart:</strong> ${profile.destination_type}</p>`;
+            html += `<p><strong>Budget:</strong> ${profile.budget_range}</p>`;
+            html += `<p><strong>Reisestil:</strong> ${profile.travel_style}</p>`;
+            html += `<p><strong>Gruppengröße:</strong> ${profile.group_size} Personen</p>`;
+            html += `<p><strong>Jahreszeit:</strong> ${profile.season_preference}</p>`;
+            html += `<p><strong>Reisedauer:</strong> ${profile.duration_preference}</p>`;
+            html += '</div>';
+            
+            messageDiv.innerHTML = html;
+            chatMessages.appendChild(messageDiv);
+            
+            addSuggestionButtons([
+                'Profil bearbeiten',
+                'Empfehlungen anzeigen',
+                'Neue Reise planen'
+            ]);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Willkommensnachricht mit erweiterten Vorschlägen
         setTimeout(() => {
-            addBotMessage('Hier sind einige Vorschläge, wie ich Ihnen helfen kann:', [
-                'Wie ist das Wetter in Wien?',
-                'Hotels in Barcelona finden',
-                'Hotels in Kopenhagen finden',
-                'Wetter in London abfragen'
+            addBotMessage('Willkommen bei TravelGuide! Ich kann Ihnen mit KI-gestützten Empfehlungen helfen:', [
+                'Empfehlungen anzeigen',
+                'Meine Präferenzen angeben',
+                'Hotels in Paris finden',
+                'Wetter in London abfragen',
+                'Flüge nach Rom suchen'
             ], 'success');
         }, 1000);
     </script>

@@ -1,6 +1,20 @@
-# TravelGuide - Intelligenter Reiseplanungs-Bot
+# TravelGuide - Intelligenter Reiseplanungs-Bot mit KI
 
-Ein KI-gestützter Chatbot zur intelligenten Reiseplanung mit schrittweiser Datensammlung.
+Ein KI-gestützter Chatbot zur intelligenten Reiseplanung mit **personalisierte Empfehlungen** und **erweiterte Entscheidungslogik**.
+
+## 🚀 Neue KI-Funktionen
+
+### 1. Personalisierte Empfehlungen durch KI-gestützte Vorschläge
+- **Intelligente Destination-Auswahl**: Basierend auf Benutzerpräferenzen (Budget, Reiseart, Gruppengröße, Jahreszeit)
+- **Dynamische Bewertung**: KI-Algorithmus bewertet Destinationen nach Übereinstimmung mit Benutzerprofil
+- **Budget-Schätzungen**: Automatische Kostenkalkulation pro Person/Woche
+- **Aktivitätsempfehlungen**: Personalisierte Vorschläge für Sehenswürdigkeiten und Aktivitäten
+
+### 2. Erweiterte Entscheidungslogik
+- **Intelligentes Intent-Routing**: Vermittelt zwischen Dialogsystem (Rasa), Suchmodulen und generativer KI
+- **Kontextbewusste Verarbeitung**: Berücksichtigt Benutzerhistorie und Präferenzen
+- **Adaptive Antworten**: Passt sich an Benutzerverhalten an
+- **KI-gestützte Hotel-Filterung**: Filtert Hotels basierend auf Budget-Präferenzen
 
 ## Funktionen
 
@@ -64,20 +78,22 @@ python main.py
 
 ```
 TravelGuide/
-├── main.py                 # Hauptanwendung
-├── decision_logic.py       # Entscheidungslogik und Session-Management
-├── config.env             # API-Keys und Konfiguration
-├── rasa_bot/              # Intent-Erkennung
+├── enhanced_decision_logic.py    # Erweiterte Entscheidungslogik mit KI
+├── ai_recommendation_engine.py   # KI-Empfehlungsmaschine
+├── decision_logic.py             # Ursprüngliche Entscheidungslogik
+├── main.py                       # Flask-App mit neuen KI-APIs
+├── config.env                    # API-Keys und Konfiguration
+├── rasa_bot/                     # Intent-Erkennung
 │   ├── __init__.py
-│   └── rasa_handler.py    # Regex-basierte Intent-Erkennung
-├── api_services/          # API-Integrationen
+│   └── rasa_handler.py          # Regex-basierte Intent-Erkennung
+├── api_services/                 # API-Integrationen
 │   ├── __init__.py
-│   ├── weather_service.py # OpenWeatherMap API
-│   ├── flight_service.py  # Amadeus API (Flüge)
-│   └── hotel_service.py   # Realistische Hoteldaten
-├── templates/             # Flask Templates
-│   └── index.html         # Moderne Chat-Interface
-└── requirements.txt       # Python-Abhängigkeiten
+│   ├── weather_service.py       # OpenWeatherMap API
+│   ├── flight_service.py        # Amadeus API (Flüge)
+│   └── hotel_service.py         # Realistische Hoteldaten
+├── templates/                    # Flask Templates
+│   └── index.html               # Erweiterte UI mit KI-Features
+└── requirements.txt              # Python-Abhängigkeiten
 ```
 
 ## Features im Detail

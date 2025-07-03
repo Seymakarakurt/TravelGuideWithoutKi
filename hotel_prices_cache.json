@@ -290,5 +290,265 @@
         "Google Hotels": "https://www.google.com/travel/hotels?q=Grange+St.+Paul's+Hotel+london&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
       }
     }
+  ],
+  "paris_2025-07-01_2025-07-08_1": [
+    {
+      "name": "Hôtel CHEVALLIER",
+      "price": 85.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+CHEVALLIER+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel Belgrand",
+      "price": 111.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+Belgrand+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel de Paris Opéra",
+      "price": 115.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+de+Paris+Opéra+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "The Originals Boutique, Hôtel Maison Montmartre, Paris",
+      "price": 132.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=The+Originals+Boutique,+Hôtel+Maison+Montmartre,+Paris+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "The People Paris Marais",
+      "price": 134.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=The+People+Paris+Marais+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel Esmeralda",
+      "price": 172.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+Esmeralda+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Europe Saint Severin-Paris Notre Dame",
+      "price": 211.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Europe+Saint+Severin-Paris+Notre+Dame+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel Louvre Bons Enfants",
+      "price": 217.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+Louvre+Bons+Enfants+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel Mercure Paris Centre Tour Eiffel",
+      "price": 270.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+Mercure+Paris+Centre+Tour+Eiffel+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Dandy Hotel",
+      "price": 311.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Dandy+Hotel+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel La Canopée",
+      "price": 312.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+La+Canopée+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Chouchou Hotel",
+      "price": 343.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Chouchou+Hotel+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hôtel Mayfair Paris",
+      "price": 345.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hôtel+Mayfair+Paris+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "SO/ PARIS",
+      "price": 698.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=SO/+PARIS+paris&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    }
+  ],
+  "rom_2025-07-01_2025-07-08_1": [
+    {
+      "name": "Grand Hotel Colony",
+      "price": 51.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Grand+Hotel+Colony+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel Roma Tor Vergata",
+      "price": 55.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Roma+Tor+Vergata+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Residenza Laterano",
+      "price": 60.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Residenza+Laterano+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "hu Roma camping in town",
+      "price": 63.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=hu+Roma+camping+in+town+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "B&B Mr. Brown",
+      "price": 64.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=B&B+Mr.+Brown+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Osimar Hotel",
+      "price": 66.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Osimar+Hotel+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel American Palace Eur",
+      "price": 68.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+American+Palace+Eur+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel NOTO",
+      "price": 69.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+NOTO+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel Zone",
+      "price": 71.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Zone+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Anthony Guesthouse",
+      "price": 72.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Anthony+Guesthouse+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel Artis",
+      "price": 73.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Artis+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "ibis Roma Fiera",
+      "price": 76.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=ibis+Roma+Fiera+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Rome Ciampino Smart Hotel",
+      "price": 76.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Rome+Ciampino+Smart+Hotel+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel Parker - GRUPPO BLAM HOTELS",
+      "price": 77.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Parker+-+GRUPPO+BLAM+HOTELS+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel Lux",
+      "price": 80.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Lux+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "B&B Hotel Roma San Lorenzo Termini",
+      "price": 81.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=B&B+Hotel+Roma+San+Lorenzo+Termini+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Raganelli Hotel",
+      "price": 81.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Raganelli+Hotel+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    },
+    {
+      "name": "Hotel Villa Eur",
+      "price": 92.0,
+      "rating": 0,
+      "booking_links": {
+        "Google Hotels": "https://www.google.com/travel/hotels?q=Hotel+Villa+Eur+rom&checkin=2025-07-01&checkout=2025-07-08&adults=1&hl=de&gl=de&curr=EUR"
+      }
+    }
   ]
 }

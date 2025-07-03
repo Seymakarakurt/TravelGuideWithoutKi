@@ -1,0 +1,106 @@
+{
+  "Berlin_paris_2025-07-08": [
+    {
+      "airline": "Lufthansa",
+      "price": 107,
+      "departure_time": "15:15",
+      "duration_hours": 2.7949826006620704,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_paris_2025-07-08"
+      }
+    },
+    {
+      "airline": "KLM",
+      "price": 111,
+      "departure_time": "12:45",
+      "duration_hours": 1.7186211844189994,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_paris_2025-07-08"
+      }
+    },
+    {
+      "airline": "Ryanair",
+      "price": 116,
+      "departure_time": "08:15",
+      "duration_hours": 2.086027547418555,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_paris_2025-07-08"
+      }
+    },
+    {
+      "airline": "easyJet",
+      "price": 121,
+      "departure_time": "15:15",
+      "duration_hours": 1.7017254928807797,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_paris_2025-07-08"
+      }
+    },
+    {
+      "airline": "Ryanair",
+      "price": 123,
+      "departure_time": "15:15",
+      "duration_hours": 3.060899503653167,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_paris_2025-07-08"
+      }
+    }
+  ],
+  "Berlin_rom_2025-07-08": [
+    {
+      "airline": "Lufthansa",
+      "price": 136,
+      "departure_time": "21:15",
+      "duration_hours": 2.367844217660191,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_rom_2025-07-08"
+      }
+    },
+    {
+      "airline": "Air France",
+      "price": 154,
+      "departure_time": "11:00",
+      "duration_hours": 1.736939299133053,
+      "stops": 1,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_rom_2025-07-08"
+      }
+    },
+    {
+      "airline": "Air France",
+      "price": 159,
+      "departure_time": "07:45",
+      "duration_hours": 1.667608660875088,
+      "stops": 1,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_rom_2025-07-08"
+      }
+    },
+    {
+      "airline": "Ryanair",
+      "price": 200,
+      "departure_time": "14:45",
+      "duration_hours": 1.1881653148748508,
+      "stops": 1,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_rom_2025-07-08"
+      }
+    },
+    {
+      "airline": "easyJet",
+      "price": 203,
+      "departure_time": "08:45",
+      "duration_hours": 1.994056140749961,
+      "stops": 0,
+      "booking_links": {
+        "Google Flights": "https://www.google.com/travel/flights?hl=de&tfs=Berlin_rom_2025-07-08"
+      }
+    }
+  ]
+}

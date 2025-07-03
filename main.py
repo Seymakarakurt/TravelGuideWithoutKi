@@ -3,8 +3,9 @@ import logging
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
+from dataclasses import asdict
 
-from decision_logic import TravelGuideDecisionLogic
+from enhanced_decision_logic import EnhancedDecisionLogic
 from api_services.flight_service import FlightService
 from api_services.hotel_service import HotelService
 from api_services.weather_service import WeatherService
@@ -40,7 +41,7 @@ class TravelGuideApp:
             self.weather_service = WeatherService()
             self.rasa_handler = RasaHandler()
             
-            self.decision_logic = TravelGuideDecisionLogic(
+            self.decision_logic = EnhancedDecisionLogic(
                 flight_service=self.flight_service,
                 hotel_service=self.hotel_service,
                 weather_service=self.weather_service,
@@ -250,6 +251,96 @@ class TravelGuideApp:
                 return jsonify({
                     'success': False,
                     'error': str(e)
+                }), 500
+        
+        @self.app.route('/api/ai/recommendations', methods=['POST'])
+        def get_ai_recommendations():
+            try:
+                data = request.get_json()
+                if not data:
+                    return jsonify({
+                        'success': False,
+                        'error': 'No data provided'
+                    }), 400
+                
+                user_id = data.get('user_id', 'anonymous')
+                preferences = data.get('preferences', {})
+                num_recommendations = data.get('num_recommendations', 3)
+                
+                recommendations = self.decision_logic.ai_recommendation_engine.generate_personalized_recommendations(
+                    user_id, 
+                    current_preferences=preferences,
+                    num_recommendations=num_recommendations
+                )
+                
+                return jsonify({
+                    'success': True,
+                    'recommendations': [asdict(rec) for rec in recommendations],
+                    'user_id': user_id,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error generating AI recommendations: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/ai/user-profile/<user_id>', methods=['GET'])
+        def get_user_profile(user_id):
+            try:
+                profile = self.decision_logic.ai_recommendation_engine.user_profiles.get(user_id)
+                if profile:
+                    return jsonify({
+                        'success': True,
+                        'profile': asdict(profile),
+                        'timestamp': datetime.now().isoformat()
+                    })
+                else:
+                    return jsonify({
+                        'success': False,
+                        'error': 'User profile not found',
+                        'timestamp': datetime.now().isoformat()
+                    }), 404
+                    
+            except Exception as e:
+                logger.error(f"Error getting user profile: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/ai/update-preferences', methods=['POST'])
+        def update_user_preferences():
+            try:
+                data = request.get_json()
+                if not data:
+                    return jsonify({
+                        'success': False,
+                        'error': 'No data provided'
+                    }), 400
+                
+                user_id = data.get('user_id', 'anonymous')
+                preferences = data.get('preferences', {})
+                
+                self.decision_logic.ai_recommendation_engine.update_user_preferences(user_id, preferences)
+                
+                return jsonify({
+                    'success': True,
+                    'message': 'User preferences updated successfully',
+                    'user_id': user_id,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error updating user preferences: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
                 }), 500
     
     def run(self, host='0.0.0.0', port=5000, debug=False):

@@ -23,6 +23,7 @@ class RasaHandler:
                 r'\b(flug|flüge|fliegen)\s+(suchen|finden|buchen)\b',
                 r'\b(flugticket|flugbuchung)\b',
                 r'\b(fliegen|flug)\s+(nach|zu)\s+([a-zA-Zäöüß\s]+)\b',
+                r'\b(flüge|flug)\s+(nach|zu)\s+([a-zA-Zäöüß\s]+)\b',
                 r'\b(flugpreise|flugkosten)\b',
                 r'\b(flugverbindung|flugroute)\b',
                 r'\b(flüge|flug)\s+(nach|zu)\s+([a-zA-Zäöüß\s]+)\s+(suchen|finden)\b',
@@ -89,21 +90,41 @@ class RasaHandler:
             best_intent = 'unknown'
             best_confidence = 0.0
             
-            for intent, patterns in self.intent_patterns.items():
-                for pattern in patterns:
-                    matches = re.findall(pattern, message_lower)
-                    if matches:
-
-                        if isinstance(matches[0], tuple):
-
-                            confidence = 0.5
-                        else:
-
-                            confidence = len(matches[0]) / len(message_lower) if isinstance(matches[0], str) else 0.5
-                        
-                        if confidence > best_confidence:
-                            best_confidence = confidence
-                            best_intent = intent
+            # Spezielle Priorität für search_flights und search_hotels
+            priority_intents = ['search_flights', 'search_hotels', 'get_weather']
+            
+            for intent in priority_intents:
+                if intent in self.intent_patterns:
+                    for pattern in self.intent_patterns[intent]:
+                        matches = re.findall(pattern, message_lower)
+                        if matches:
+                            if isinstance(matches[0], tuple):
+                                confidence = 0.8  # Höhere Priorität für spezifische Intents
+                            else:
+                                confidence = len(matches[0]) / len(message_lower) if isinstance(matches[0], str) else 0.8
+                            
+                            if confidence > best_confidence:
+                                best_confidence = confidence
+                                best_intent = intent
+                                break
+                    if best_intent in priority_intents:
+                        break
+            
+            # Falls kein spezifischer Intent gefunden, suche in allen anderen
+            if best_intent not in priority_intents:
+                for intent, patterns in self.intent_patterns.items():
+                    if intent not in priority_intents:  # Überspringe bereits geprüfte
+                        for pattern in patterns:
+                            matches = re.findall(pattern, message_lower)
+                            if matches:
+                                if isinstance(matches[0], tuple):
+                                    confidence = 0.5
+                                else:
+                                    confidence = len(matches[0]) / len(message_lower) if isinstance(matches[0], str) else 0.5
+                                
+                                if confidence > best_confidence:
+                                    best_confidence = confidence
+                                    best_intent = intent
             
 
             if best_confidence < 0.1:
@@ -151,6 +172,26 @@ class RasaHandler:
                     # Entferne Wörter wie "abfragen", "suchen", etc. am Ende
                     location = re.sub(r'\s+(?:abfragen|suchen|finden|checken|prüfen)$', '', location, flags=re.IGNORECASE)
                     entities['weather_location'] = location.strip()
+                    break
+        
+        elif intent == 'search_flights':
+            flight_patterns = [
+                r'\b(flüge|flug)\s+(nach|zu)\s+([a-zA-Zäöüß]+(?:\s+[a-zA-Zäöüß]+)*?)(?:\s+(?:suchen|finden|buchen))?\b',
+                r'\b(fliegen|flug)\s+(nach|zu)\s+([a-zA-Zäöüß]+(?:\s+[a-zA-Zäöüß]+)*?)(?:\s+(?:suchen|finden|buchen))?\b'
+            ]
+            for pattern in flight_patterns:
+                matches = re.findall(pattern, message)
+                if matches:
+                    if len(matches[0]) == 3:
+                        location = matches[0][2].strip()
+                    elif len(matches[0]) == 2:
+                        location = matches[0][1].strip()
+                    else:
+                        continue
+                    
+                    # Entferne Wörter wie "suchen", "finden", etc. am Ende
+                    location = re.sub(r'\s+(?:suchen|finden|buchen)$', '', location, flags=re.IGNORECASE)
+                    entities['flight_destination'] = location.strip()
                     break
         
         elif intent == 'provide_destination':
