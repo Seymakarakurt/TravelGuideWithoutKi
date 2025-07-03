@@ -7,7 +7,7 @@ Ein KI-gestützter Chatbot zur intelligenten Reiseplanung mit schrittweiser Date
 - **Schrittweise Dialogführung**: Sammelt systematisch Reiseziel, Daten und Budget
 - **Intelligente Intent-Erkennung**: Regex-basierte Erkennung von Benutzerabsichten
 - **Wetter-API**: Echte Wetterdaten über OpenWeatherMap API
-- **Flugsuche**: Integration der Amadeus API mit deduplizierten Ergebnissen
+- **Flugsuche**: Generierte Flugdaten mit deduplizierten Ergebnissen
 - **Hotelsuche**: Realistische Hoteldaten basierend auf echten Hotels
 - **Web-Interface**: Moderne Chat-Oberfläche mit klickbaren Links
 - **Session-Management**: Benutzer-Sessions mit "Alles zurücksetzen" Funktion
@@ -33,16 +33,11 @@ Bearbeiten Sie die `config.env` Datei:
 ```env
 # OpenWeatherMap API Key für Wetterdaten (KOSTENLOS)
 OPENWEATHER_API_KEY=your-openweather-api-key-here
-
-# Amadeus API Keys für Flugdaten
-AMADEUS_CLIENT_ID=your-amadeus-client-id-here
-AMADEUS_CLIENT_SECRET=your-amadeus-client-secret-here
 ```
 
 ### API-Keys erhalten:
 
 - **OpenWeatherMap API Key**: Registrieren Sie sich auf [openweathermap.org](https://openweathermap.org) - **KOSTENLOS**
-- **Amadeus API Keys**: Registrieren Sie sich auf [amadeus.com](https://amadeus.com)
 
 ## Verwendung
 
@@ -73,7 +68,7 @@ TravelGuide/
 ├── api_services/          # API-Integrationen
 │   ├── __init__.py
 │   ├── weather_service.py # OpenWeatherMap API
-│   ├── flight_service.py  # Amadeus API (Flüge)
+│   ├── flight_service.py  # Generierte Flugdaten
 │   └── hotel_service.py   # Realistische Hoteldaten
 ├── templates/             # Flask Templates
 │   └── index.html         # Moderne Chat-Interface
@@ -96,8 +91,8 @@ TravelGuide/
 - **Aktuelle Wetterdaten** für beliebige Reiseziele
 - **Wettervorhersagen** für Reisezeiträume
 
-### Flugsuche (Amadeus API)
-- Echte Flugdaten mit Deduplizierung
+### Flugsuche (Generierte Daten)
+- Generierte Flugdaten mit Deduplizierung
 - Vollständige Airline-Namen statt Codes
 - Abflugzeiten und Flugdauer
 - Klickbare Google Flights Links
