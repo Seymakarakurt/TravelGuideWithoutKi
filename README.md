@@ -6,6 +6,7 @@ Ein KI-gestützter Chatbot zur intelligenten Reiseplanung mit schrittweiser Date
 
 - **Schrittweise Dialogführung**: Sammelt systematisch Reiseziel, Daten und Budget
 - **Intelligente Intent-Erkennung**: Regex-basierte Erkennung von Benutzerabsichten
+- **KI-Integration**: OpenRouter API für intelligente Reiseberatung
 - **Wetter-API**: Echte Wetterdaten über OpenWeatherMap API
 - **Flugsuche**: Generierte Flugdaten mit deduplizierten Ergebnissen
 - **Hotelsuche**: Realistische Hoteldaten basierend auf echten Hotels
@@ -33,11 +34,16 @@ Bearbeiten Sie die `config.env` Datei:
 ```env
 # OpenWeatherMap API Key für Wetterdaten (KOSTENLOS)
 OPENWEATHER_API_KEY=your-openweather-api-key-here
+
+# OpenRouter API Key für KI-Integration (KOSTENLOS mit Limits)
+OPENROUTER_API_KEY=your-openrouter-api-key-here
+OPENROUTER_MODEL=anthropic/claude-3.5-sonnet
 ```
 
 ### API-Keys erhalten:
 
 - **OpenWeatherMap API Key**: Registrieren Sie sich auf [openweathermap.org](https://openweathermap.org) - **KOSTENLOS**
+- **OpenRouter API Key**: Registrieren Sie sich auf [openrouter.ai](https://openrouter.ai) - **KOSTENLOS** (mit Limits)
 
 ## Verwendung
 
@@ -69,7 +75,8 @@ TravelGuide/
 │   ├── __init__.py
 │   ├── weather_service.py # OpenWeatherMap API
 │   ├── flight_service.py  # Generierte Flugdaten
-│   └── hotel_service.py   # Realistische Hoteldaten
+│   ├── hotel_service.py   # Realistische Hoteldaten
+│   └── openrouter_service.py # OpenRouter KI-API
 ├── templates/             # Flask Templates
 │   └── index.html         # Moderne Chat-Interface
 └── requirements.txt       # Python-Abhängigkeiten
@@ -102,6 +109,12 @@ TravelGuide/
 - Basierend auf echten Hotels in beliebten Städten
 - Keine API-Abhängigkeit oder Webscraping
 - Klickbare Hotel-Links
+
+### KI-Integration (OpenRouter)
+- Intelligente Reiseberatung mit verschiedenen KI-Modellen
+- Kontextbewusste Antworten basierend auf der Reiseplanung
+- Unterstützung für Claude, GPT-4, Gemini und andere Modelle
+- Automatischer Fallback bei API-Problemen
 
 ### Web-Interface
 - Moderne, responsive Chat-Oberfläche

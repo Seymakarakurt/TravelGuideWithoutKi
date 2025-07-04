@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from decision_logic import TravelGuideDecisionLogic
 from api_services.hotel_service import HotelService
 from api_services.weather_service import WeatherService
+from api_services.openrouter_service import OpenRouterService
 from rasa_bot.rasa_handler import RasaHandler
 
 load_dotenv('config.env')
@@ -35,11 +36,13 @@ class TravelGuideApp:
         try:
             self.hotel_service = HotelService()
             self.weather_service = WeatherService()
+            self.openrouter_service = OpenRouterService()
             self.rasa_handler = RasaHandler()
             
             self.decision_logic = TravelGuideDecisionLogic(
                 hotel_service=self.hotel_service,
                 weather_service=self.weather_service,
+                openrouter_service=self.openrouter_service,
                 rasa_handler=self.rasa_handler
             )
             
@@ -228,6 +231,88 @@ class TravelGuideApp:
                 return jsonify({
                     'success': False,
                     'error': str(e)
+                }), 500
+        
+        # OpenRouter API Endpunkte
+        @self.app.route('/api/openrouter/test', methods=['GET'])
+        def test_openrouter():
+            try:
+                test_result = self.openrouter_service.test_connection()
+                return jsonify({
+                    'success': True,
+                    'test_result': test_result,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error testing OpenRouter: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/openrouter/models', methods=['GET'])
+        def get_openrouter_models():
+            try:
+                models = self.openrouter_service.get_available_models()
+                return jsonify({
+                    'success': True,
+                    'models': models,
+                    'count': len(models),
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+            except Exception as e:
+                logger.error(f"Error getting OpenRouter models: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/api/openrouter/generate', methods=['POST'])
+        def generate_ai_response():
+            try:
+                data = request.get_json()
+                if not data:
+                    return jsonify({
+                        'success': False,
+                        'error': 'No data provided'
+                    }), 400
+                
+                message = data.get('message', '').strip()
+                context = data.get('context', '')
+                model = data.get('model', None)
+                max_tokens = data.get('max_tokens', 1000)
+                temperature = data.get('temperature', 0.7)
+                
+                if not message:
+                    return jsonify({
+                        'success': False,
+                        'error': 'Empty message'
+                    }), 400
+                
+                logger.info(f"OpenRouter Anfrage: {message[:50]}...")
+                
+                response = self.openrouter_service.generate_response(
+                    message=message,
+                    context=context,
+                    model=model,
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
+                
+                return jsonify({
+                    'success': True,
+                    'response': response
+                })
+                
+            except Exception as e:
+                logger.error(f"Error generating AI response: {e}")
+                return jsonify({
+                    'success': False,
+                    'error': 'Internal server error'
                 }), 500
     
     def run(self, host='0.0.0.0', port=5000, debug=False):

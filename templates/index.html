@@ -21,16 +21,91 @@
             padding: 20px;
         }
 
-        .chat-container {
+        .main-container {
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 800px;
-            height: 80vh;
+            max-width: 1000px;
+            height: 85vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            border-right: 1px solid #eee;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+        }
+
+        .sidebar-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar-header h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            opacity: 0.9;
+            font-size: 12px;
+        }
+
+        .feature-buttons {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-btn {
+            background: white;
+            color: #333;
+            border: 2px solid #667eea;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .feature-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .feature-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .feature-btn.ki-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        .feature-btn.ki-btn:hover {
+            background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+        }
+
+        .feature-btn.ki-btn.active {
+            background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+        }
+
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .chat-header {
@@ -48,6 +123,20 @@
         .chat-header p {
             opacity: 0.9;
             font-size: 14px;
+        }
+
+        .mode-indicator {
+            background: #f0f0f0;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mode-indicator.ki-mode {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            color: #333;
         }
 
         .chat-messages {
@@ -82,6 +171,11 @@
             white-space: pre-line;
         }
 
+        .ki-message {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-left: 4px solid #ff6b6b;
+        }
+
         .suggestions {
             display: flex;
             flex-wrap: wrap;
@@ -103,6 +197,14 @@
         .suggestion-btn:hover {
             background: #5a6fd8;
             transform: translateY(-2px);
+        }
+
+        .ki-suggestion-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+
+        .ki-suggestion-btn:hover {
+            background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
         }
 
         .chat-input {
@@ -188,9 +290,28 @@
         }
 
         @media (max-width: 768px) {
-            .chat-container {
+            .main-container {
+                flex-direction: column;
                 height: 90vh;
                 margin: 10px;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .feature-buttons {
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 15px;
+            }
+            
+            .feature-btn {
+                min-width: 120px;
+                white-space: nowrap;
             }
             
             .message {
@@ -204,30 +325,123 @@
     </style>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h1>TravelGuide</h1>
-            <p>Ihr intelligenter Reiseplanungs Assistent</p>
-        </div>
-        
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-                Hallo! Ich bin Ihr TravelGuide. Wie kann ich Ihnen helfen?
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>TravelGuide</h2>
+                <p>Wählen Sie eine Funktion</p>
+            </div>
+            
+            <div class="feature-buttons">
+                <button class="feature-btn ki-btn active" onclick="switchMode('ki')">
+                    🤖 KI-Chat
+                    <br><small>Intelligente Reiseberatung</small>
+                </button>
+                
+                <button class="feature-btn" onclick="switchMode('weather')">
+                    🌤️ Wetter
+                    <br><small>Aktuelle Wetterdaten</small>
+                </button>
+                
+                <button class="feature-btn" onclick="switchMode('hotels')">
+                    🏨 Hotels
+                    <br><small>Hotel-Suche & Preise</small>
+                </button>
             </div>
         </div>
         
-        <div class="loading" id="loading">
-            <p>TravelGuide denkt nach...</p>
-        </div>
-        
-        <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Ihre Nachricht..." onkeypress="handleKeyPress(event)">
-            <button onclick="sendMessage()">Senden</button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>TravelGuide</h1>
+                <p>Ihr intelligenter Reiseplanungs Assistent</p>
+            </div>
+            
+            <div class="mode-indicator" id="modeIndicator">
+                🤖 KI-Chat Modus - Stellen Sie mir Fragen zu Reisezielen, Kultur, Sehenswürdigkeiten und mehr!
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message ki-message">
+                    Hallo! Ich bin Ihr KI-Reiseassistent. Ich kann Ihnen bei allen Fragen zu Reisezielen, Kultur, Sehenswürdigkeiten, Restaurants und vielem mehr helfen! 🚀
+                </div>
+            </div>
+            
+            <div class="loading" id="loading">
+                <p>TravelGuide denkt nach...</p>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Ihre Nachricht..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">Senden</button>
+            </div>
         </div>
     </div>
 
     <script>
         let userId = 'user_' + Math.random().toString(36).substr(2, 9);
+        let currentMode = 'ki';
+
+        function switchMode(mode) {
+            currentMode = mode;
+            
+            // Update button styles
+            document.querySelectorAll('.feature-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update mode indicator
+            const indicator = document.getElementById('modeIndicator');
+            indicator.className = 'mode-indicator';
+            
+            switch(mode) {
+                case 'ki':
+                    indicator.className = 'mode-indicator ki-mode';
+                    indicator.innerHTML = '🤖 KI-Chat Modus - Stellen Sie mir Fragen zu Reisezielen, Kultur, Sehenswürdigkeiten und mehr!';
+                    break;
+                case 'weather':
+                    indicator.innerHTML = '🌤️ Wetter Modus - Fragen Sie nach dem Wetter in beliebigen Städten!';
+                    break;
+                case 'hotels':
+                    indicator.innerHTML = '🏨 Hotel Modus - Suchen Sie nach Hotels und Preisen!';
+                    break;
+            }
+            
+            // Clear chat and show mode-specific welcome message
+            clearChat();
+            showModeWelcome(mode);
+        }
+
+        function clearChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+        }
+
+        function showModeWelcome(mode) {
+            switch(mode) {
+                case 'ki':
+                    addBotMessage('🤖 Willkommen im KI-Chat! Ich kann Ihnen bei allen Reisefragen helfen. Probieren Sie Fragen wie:\n\n• "Was sind die besten Sehenswürdigkeiten in Paris?"\n• "Erzähl mir über die Kultur in Japan"\n• "Welche Restaurants empfehlst du in Rom?"', [
+                        'Was sind die besten Museen in Berlin?',
+                        'Erzähl mir über die Geschichte von Venedig',
+                        'Welche lokalen Gerichte muss ich in Thailand probieren?'
+                    ], 'ki');
+                    break;
+                case 'weather':
+                    addBotMessage('🌤️ Willkommen im Wetter-Modus! Fragen Sie nach dem aktuellen Wetter in beliebigen Städten.', [
+                        'Wie ist das Wetter in Wien?',
+                        'Wetter in London abfragen',
+                        'Wetter in Barcelona'
+                    ], 'weather');
+                    break;
+                case 'hotels':
+                    addBotMessage('🏨 Willkommen im Hotel-Modus! Suchen Sie nach Hotels und Preisen.', [
+                        'Hotels in Barcelona finden',
+                        'Hotels in Kopenhagen finden',
+                        'Unterkunft in Stockholm suchen'
+                    ], 'hotels');
+                    break;
+            }
+        }
 
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
@@ -241,31 +455,50 @@
             
             if (!message) return;
             
-
             addMessage(message, 'user');
             input.value = '';
-            
-
             showLoading(true);
             
-
-            fetch('/api/chat', {
+            // Choose endpoint based on mode
+            let endpoint = '/api/chat';
+            let payload = {
+                message: message,
+                user_id: userId
+            };
+            
+            if (currentMode === 'ki') {
+                endpoint = '/api/openrouter/generate';
+                payload = {
+                    message: message,
+                    context: `KI-Chat Modus - Benutzer fragt nach Reiseinformationen`,
+                    max_tokens: 1000,
+                    temperature: 0.7
+                };
+            }
+            
+            fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    message: message,
-                    user_id: userId
-                })
+                body: JSON.stringify(payload)
             })
             .then(response => response.json())
             .then(data => {
                 showLoading(false);
                 
                 if (data.success) {
-                    const response = data.response;
-                    addBotMessage(response.message, response.suggestions, response.type);
+                    if (currentMode === 'ki') {
+                        const aiResponse = data.response;
+                        addBotMessage(aiResponse.response, [
+                            'Erzähl mir mehr über die Kultur',
+                            'Was sind die besten Restaurants?',
+                            'Welche Aktivitäten empfehlst du?'
+                        ], 'ki');
+                    } else {
+                        const response = data.response;
+                        addBotMessage(response.message, response.suggestions, response.type);
+                    }
                 } else {
                     addBotMessage('Entschuldigung, es ist ein Fehler aufgetreten.', [], 'error');
                 }
@@ -291,18 +524,20 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `message bot-message`;
             
+            // Add KI-specific styling
+            if (type === 'ki' || currentMode === 'ki') {
+                messageDiv.classList.add('ki-message');
+            }
 
             if (type === 'weather_info') {
                 messageDiv.innerHTML = `<div class="weather-info">${message}</div>`;
             } else if (type === 'flight_results') {
-
                 const messageWithLinks = message.replace(
                     /(https?:\/\/[^\s]+)/g, 
                     '<a href="$1" target="_blank" style="color: #667eea; text-decoration: underline;">$1</a>'
                 );
                 messageDiv.innerHTML = `<div class="flight-results">${messageWithLinks}</div>`;
             } else if (type === 'hotel_results') {
-
                 const messageWithLinks = message.replace(
                     /(https?:\/\/[^\s]+)/g, 
                     '<a href="$1" target="_blank" style="color: #667eea; text-decoration: underline;">$1</a>'
@@ -318,14 +553,13 @@
             
             chatMessages.appendChild(messageDiv);
             
-
             if (suggestions && suggestions.length > 0) {
                 const suggestionsDiv = document.createElement('div');
                 suggestionsDiv.className = 'suggestions';
                 
                 suggestions.forEach(suggestion => {
                     const button = document.createElement('button');
-                    button.className = 'suggestion-btn';
+                    button.className = currentMode === 'ki' ? 'suggestion-btn ki-suggestion-btn' : 'suggestion-btn';
                     button.textContent = suggestion;
                     button.onclick = () => {
                         document.getElementById('messageInput').value = suggestion;
@@ -349,15 +583,10 @@
             }
         }
 
-        // Willkommensnachricht mit Vorschlägen
+        // Initialize with KI mode
         setTimeout(() => {
-            addBotMessage('Hier sind einige Vorschläge, wie ich Ihnen helfen kann:', [
-                'Wie ist das Wetter in Wien?',
-                'Hotels in Barcelona finden',
-                'Hotels in Kopenhagen finden',
-                'Wetter in London abfragen'
-            ], 'success');
-        }, 1000);
+            showModeWelcome('ki');
+        }, 500);
     </script>
 </body>
 </html> 

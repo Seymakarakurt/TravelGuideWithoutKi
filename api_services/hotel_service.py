@@ -18,16 +18,12 @@ logger = logging.getLogger(__name__)
 
 class HotelService:
     def __init__(self):
-        # Cache für gespeicherte Hotelpreise
         self.price_cache = {}
         self.cache_file = 'hotel_prices_cache.json'
         self._load_cache()
-        
-        # Selenium WebDriver Setup
         self.driver = None
     
     def _load_cache(self):
-        """Lädt gespeicherte Hotelpreise aus der Cache-Datei"""
         try:
             if os.path.exists(self.cache_file):
                 with open(self.cache_file, 'r', encoding='utf-8') as f:
@@ -38,7 +34,6 @@ class HotelService:
             self.price_cache = {}
     
     def _save_cache(self):
-        """Speichert Hotelpreise in die Cache-Datei"""
         try:
             with open(self.cache_file, 'w', encoding='utf-8') as f:
                 json.dump(self.price_cache, f, ensure_ascii=False, indent=2)
@@ -47,15 +42,12 @@ class HotelService:
             logger.error(f"Fehler beim Speichern des Hotel-Caches: {e}")
     
     def _get_cache_key(self, location: str, check_in: str, check_out: str, guests: int) -> str:
-        """Erstellt einen eindeutigen Cache-Schlüssel"""
         return f"{location}_{check_in}_{check_out}_{guests}"
 
     def search_hotels(self, location: str, check_in: Optional[str] = None, 
                      check_out: Optional[str] = None, guests: int = 1, 
                      budget: Optional[int] = None) -> List[Dict[str, Any]]:
-        """Sucht Hotels mit Selenium WebScraping"""
         try:
-            # Standard-Daten für Check-in/Check-out
             if not check_in:
                 check_in = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
             if not check_out:

@@ -7,9 +7,10 @@ import re
 logger = logging.getLogger(__name__)
 
 class TravelGuideDecisionLogic:
-    def __init__(self, hotel_service, weather_service, rasa_handler):
+    def __init__(self, hotel_service, weather_service, openrouter_service, rasa_handler):
         self.hotel_service = hotel_service
         self.weather_service = weather_service
+        self.openrouter_service = openrouter_service
         self.rasa_handler = rasa_handler
         self.user_sessions = {}
         self.dialog_states = {
@@ -84,7 +85,8 @@ class TravelGuideDecisionLogic:
                     return self._handle_general_question(message, user_id)
             
             else:
-                return self._handle_general_question(message, user_id)
+                # Verwende KI für allgemeine Fragen
+                return self._handle_ai_assistance(message, user_id)
                 
         except Exception as e:
             logger.error(f"Fehler bei der Nachrichtenverarbeitung: {e}")
@@ -673,4 +675,74 @@ Budget-Tipps:
             'type': 'goodbye',
             'message': 'Vielen Dank für die Nutzung des TravelGuide! Ich wünsche Ihnen eine wundervolle Reise! 🌍',
             'suggestions': ['Neue Reise planen']
-        } 
+        }
+    
+    def _handle_ai_assistance(self, message: str, user_id: str) -> Dict[str, Any]:
+        """Verwendet OpenRouter KI für allgemeine Fragen und Reiseberatung"""
+        try:
+            session = self.user_sessions[user_id]
+            
+            # Erstelle Kontext aus der Session
+            context_parts = []
+            if session['preferences'].get('destination'):
+                context_parts.append(f"Reiseziel: {session['preferences']['destination']}")
+            if session['preferences'].get('start_date') and session['preferences'].get('end_date'):
+                context_parts.append(f"Reisedaten: {session['preferences']['start_date']} bis {session['preferences']['end_date']}")
+            if session['preferences'].get('travelers'):
+                context_parts.append(f"Reisende: {session['preferences']['travelers']} Person(en)")
+            
+            context = " | ".join(context_parts) if context_parts else ""
+            
+            # Generiere KI-Antwort
+            ai_response = self.openrouter_service.generate_response(
+                message=message,
+                context=context,
+                max_tokens=800,
+                temperature=0.7
+            )
+            
+            if ai_response['success']:
+                # Füge Vorschläge basierend auf dem Kontext hinzu
+                suggestions = self._get_ai_suggestions(session)
+                
+                return {
+                    'type': 'ai_response',
+                    'message': ai_response['response'],
+                    'suggestions': suggestions,
+                    'ai_metadata': {
+                        'model': ai_response.get('model', 'unbekannt'),
+                        'tokens_used': ai_response.get('usage', {}).get('total_tokens', 0)
+                    }
+                }
+            else:
+                # Fallback zur ursprünglichen Methode
+                return self._handle_general_question(message, user_id)
+                
+        except Exception as e:
+            logger.error(f"Fehler bei KI-Assistenz: {e}")
+            # Fallback zur ursprünglichen Methode
+            return self._handle_general_question(message, user_id)
+    
+    def _get_ai_suggestions(self, session: Dict[str, Any]) -> List[str]:
+        """Generiert Vorschläge basierend auf der aktuellen Session"""
+        suggestions = []
+        
+        # Basis-Vorschläge
+        suggestions.extend([
+            'Wie ist das Wetter in Wien?',
+            'Hotels in Barcelona finden',
+            'Wetter in London abfragen'
+        ])
+        
+        # Kontext-spezifische Vorschläge
+        if session['preferences'].get('destination'):
+            destination = session['preferences']['destination']
+            suggestions.extend([
+                f'Hotels in {destination} finden',
+                f'Wetter in {destination} abfragen'
+            ])
+        
+        # Session-Management
+        suggestions.append('Alles zurücksetzen')
+        
+        return suggestions[:5]  # Maximal 5 Vorschläge 
