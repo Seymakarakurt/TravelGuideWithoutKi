@@ -3,9 +3,7 @@ import logging
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
-
 from decision_logic import TravelGuideDecisionLogic
-from api_services.flight_service import FlightService
 from api_services.hotel_service import HotelService
 from api_services.weather_service import WeatherService
 from rasa_bot.rasa_handler import RasaHandler
@@ -35,13 +33,11 @@ class TravelGuideApp:
     
     def _initialize_services(self):
         try:
-            self.flight_service = FlightService()
             self.hotel_service = HotelService()
             self.weather_service = WeatherService()
             self.rasa_handler = RasaHandler()
             
             self.decision_logic = TravelGuideDecisionLogic(
-                flight_service=self.flight_service,
                 hotel_service=self.hotel_service,
                 weather_service=self.weather_service,
                 rasa_handler=self.rasa_handler
@@ -101,25 +97,7 @@ class TravelGuideApp:
                 'version': '1.0.0'
             })
         
-        @self.app.route('/api/test/flights', methods=['GET'])
-        def test_flights():
-            try:
-                # Teste API-Verbindung
-                api_status = self.flight_service.test_api_connection()
-                
-                return jsonify({
-                    'success': True,
-                    'api_status': api_status,
-                    'timestamp': datetime.now().isoformat()
-                })
-                
-            except Exception as e:
-                logger.error(f"Error testing flight API: {e}")
-                return jsonify({
-                    'success': False,
-                    'error': str(e),
-                    'timestamp': datetime.now().isoformat()
-                }), 500
+
         
         @self.app.route('/api/test/hotels', methods=['GET'])
         def test_hotels():

@@ -7,8 +7,7 @@ import re
 logger = logging.getLogger(__name__)
 
 class TravelGuideDecisionLogic:
-    def __init__(self, flight_service, hotel_service, weather_service, rasa_handler):
-        self.flight_service = flight_service
+    def __init__(self, hotel_service, weather_service, rasa_handler):
         self.hotel_service = hotel_service
         self.weather_service = weather_service
         self.rasa_handler = rasa_handler
