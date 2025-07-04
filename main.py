@@ -315,10 +315,9 @@ class TravelGuideApp:
                     'error': 'Internal server error'
                 }), 500
     
-    def run(self, host='0.0.0.0', port=5000, debug=False):
+    def run(self, host='0.0.0.0', port=5001, debug=False):
         logger.info("TravelGuide wird gestartet...")
         logger.info(f"Web-Interface verfügbar unter: http://localhost:{port}")
-        
         self.app.run(
             host=host,
             port=port,
@@ -328,7 +327,7 @@ class TravelGuideApp:
 def main():
     try:
         app = TravelGuideApp()
-        app.run(debug=os.getenv('DEBUG', 'False').lower() == 'true')
+        app.run(port=5001, debug=os.getenv('DEBUG', 'False').lower() == 'true')
         
     except KeyboardInterrupt:
         logger.info("Application stopped by user")
